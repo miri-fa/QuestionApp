@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:theme="@style/ThemeOverlay.Question2.FullscreenContainer"
+    tools:context=".FullscreenActivity">
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="364dp"
+        android:layout_height="563dp"
+        android:background="@drawable/shape"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.685">
+
+        <TextView
+            android:id="@+id/textEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:layout_marginHorizontal="20sp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Correo electrónico"
+            android:textColor="#EB6383"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="130sp"
+            android:layout_marginHorizontal="20sp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Contraseña"
+            android:textColor="#EB6383"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/loginEmailAddress"
+            android:layout_width="314dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="80sp"
+            android:background="@drawable/textinput"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/loginPassword"
+            android:layout_width="314dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="180sp"
+            android:background="@drawable/textinput"
+
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/loginButton"
+            android:layout_width="200sp"
+            android:layout_marginTop="390sp"
+            android:layout_height="70dp"
+            android:textColor="#FFE9C5"
+            android:background="@drawable/buttongradient"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/lato_bold"
+            android:text="Iniciar sesión" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/forgottenpasswordbutton"
+            android:layout_width="228dp"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="20sp"
+            android:layout_marginTop="220sp"
+            android:background="#00EB6383"
+            android:fontFamily="@font/lato_bold"
+            android:text="@string/forgotten_password"
+            android:textColor="#EB6383" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/registerButton"
+            android:layout_width="200sp"
+            android:layout_marginTop="470sp"
+            android:layout_height="70dp"
+            android:textColor="#FFE9C5"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/buttongradient"
+            android:fontFamily="@font/lato_bold"
+            android:text="Registrarse" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/pacifico_normal"
+        android:shadowColor="#EB6383"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="6"
+        android:text="Iniciar sesión"
+        android:textColor="#99EB6383"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="339dp"
+        android:layout_height="115dp"
+        android:fontFamily="@font/pacifico_normal"
+        android:shadowColor="#B64A63"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="10"
+        android:text="Iniciar sesión"
+        android:textColor="#FA9191"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

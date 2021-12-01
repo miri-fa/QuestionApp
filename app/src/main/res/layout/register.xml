@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:theme="@style/ThemeOverlay.Question2.FullscreenContainer"
+    tools:context=".FullscreenActivity">
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="364dp"
+        android:layout_height="563dp"
+        android:background="@drawable/shape"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.685">
+
+        <TextView
+            android:id="@+id/textEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30sp"
+            android:layout_marginHorizontal="20sp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Correo electrónico"
+            android:textColor="#EB6383"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/textPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="130sp"
+            android:layout_marginHorizontal="20sp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Contraseña"
+            android:textColor="#EB6383"
+            android:textSize="30sp" />
+        <TextView
+            android:id="@+id/textConfirmPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230sp"
+            android:layout_marginHorizontal="20sp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Confirmar contraseña"
+            android:textColor="#EB6383"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress"
+            android:layout_width="314dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="80sp"
+            android:background="@drawable/textinput"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/newPassword"
+            android:layout_width="314dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="180sp"
+            android:background="@drawable/textinput"
+
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <EditText
+            android:id="@+id/newConfirmTextPassword"
+            android:layout_width="314dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="280sp"
+            android:background="@drawable/textinput"
+
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/registerButton2"
+            android:layout_width="200sp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="440sp"
+            android:background="@drawable/buttongradient"
+            android:fontFamily="@font/lato_bold"
+            android:text="Registrarse"
+            android:textColor="#FFE9C5" />
+        <TextView
+            android:id="@+id/textRoleType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="330sp"
+            android:layout_marginHorizontal="20sp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Tipo de cuenta"
+            android:textColor="#EB6383"
+            android:textSize="30sp" />
+
+        <Spinner
+            android:id="@+id/optionsRole"
+            android:layout_width="match_parent"
+            android:layout_height="34sp"
+            android:layout_marginHorizontal="20sp"
+            android:layout_marginTop="380sp"
+            android:background="@drawable/textinput"
+            android:fontFamily="@font/lato_bold"
+            android:popupBackground="@drawable/textinput"
+            android:spinnerMode="dropdown"
+            android:textColor="#FFE9C5" />
+
+        <ImageView
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginHorizontal="310sp"
+            android:layout_marginTop="380sp"
+            android:src="@drawable/dropdown_arrow" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="306dp"
+        android:layout_height="125dp"
+        android:fontFamily="@font/pacifico_normal"
+        android:gravity="center_horizontal"
+        android:shadowColor="#EB6383"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="6"
+        android:text="Registrarse"
+        android:textColor="#99EB6383"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.550"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="339dp"
+        android:layout_height="125dp"
+        android:fontFamily="@font/pacifico_normal"
+        android:gravity="center_horizontal"
+        android:shadowColor="#B64A63"
+        android:shadowDx="5"
+        android:shadowDy="5"
+        android:shadowRadius="10"
+        android:text="Registrarse"
+        android:textColor="#FA9191"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/registerGoBack"
+        android:layout_width="53dp"
+        android:layout_height="48dp"
+
+        android:background="@drawable/arrow_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Question2</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="forgotten_password"><u>He olvidado mi contraseña</u></string>
+    <string-array name="roles">
+        <item>Profesor</item>
+        <item>Alumno</item>
+    </string-array>
+</resources>
