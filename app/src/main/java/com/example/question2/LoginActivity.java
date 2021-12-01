@@ -2,12 +2,10 @@ package com.example.question2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,12 +16,12 @@ public class LoginActivity extends AppCompatActivity{
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.login);
+        setContentView(R.layout.activity_login);
 
         View.OnClickListener onClickListener1 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent =new Intent(LoginActivity.this, MainActivityTeacher.class);
                 LoginActivity.this.finish();
                 startActivity(intent);
             }

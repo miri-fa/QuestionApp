@@ -31,7 +31,7 @@
             >
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".MainActivityTeacher"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:label="Quest?on"

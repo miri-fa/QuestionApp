@@ -19,7 +19,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.register);
+        setContentView(R.layout.activity_register);
         Spinner spinner = findViewById(R.id.optionsRole);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.roles, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         View.OnClickListener onClickListener1 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(RegisterActivity.this, MainActivity.class);
+                Intent intent =new Intent(RegisterActivity.this, MainActivityTeacher.class);
                 RegisterActivity.this.finish();
                 startActivity(intent);
             }

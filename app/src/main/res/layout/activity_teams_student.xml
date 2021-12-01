@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:theme="@style/ThemeOverlay.Question2.FullscreenContainer"
+    tools:context=".FullscreenActivity">
+
+    <FrameLayout
+        android:id="@+id/frameMain"
+        android:layout_width="414dp"
+        android:layout_height="91dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/settingsrGoBack"
+            android:layout_width="53dp"
+            android:layout_height="48dp"
+
+            android:background="@drawable/arrow_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title1"
+            android:layout_width="160dp"
+            android:layout_height="83dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:fontFamily="@font/pacifico_normal"
+            android:shadowColor="#B64A63"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="5"
+            android:text="Equipos"
+            android:textColor="#FA9191"
+            android:textSize="40sp" />
+
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="362dp"
+        android:layout_height="607dp"
+        android:background="@drawable/shape"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|top"
+            android:layout_marginLeft="10sp"
+            android:layout_marginTop="20sp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Código del equipo a unirse:"
+            android:textColor="#525252"
+            android:textSize="20dp" />
+        <EditText
+            android:id="@+id/editTextTextEmailAddress"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginTop="50sp"
+            android:background="@drawable/textinput"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="textEmailAddress" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="60dp"
+            android:layout_marginTop="100dp"
+            android:text="Unirse"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="#525252"
+            android:background="@drawable/bottom_buttons_main" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Listado de equipos:"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="#525252"
+            android:layout_marginTop="180sp"
+            android:layout_marginLeft="10sp"
+            android:layout_gravity="left|top"
+            android:textSize="20dp"
+            />
+
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

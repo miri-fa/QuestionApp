@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:theme="@style/ThemeOverlay.Question2.FullscreenContainer"
+    tools:context=".FullscreenActivity">
+
+    <FrameLayout
+        android:id="@+id/frameMain"
+        android:layout_width="414dp"
+        android:layout_height="91dp"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/settingsrGoBack"
+            android:layout_width="53dp"
+            android:layout_height="48dp"
+
+            android:background="@drawable/arrow_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/title1"
+            android:layout_width="160dp"
+            android:layout_height="83dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:fontFamily="@font/pacifico_normal"
+            android:shadowColor="#B64A63"
+            android:shadowDx="5"
+            android:shadowDy="5"
+            android:shadowRadius="5"
+            android:text="Ajustes"
+            android:textColor="#FA9191"
+            android:textSize="40sp" />
+
+
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/frameLayout2"
+        android:layout_width="362dp"
+        android:layout_height="607dp"
+        android:background="@drawable/shape"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.75">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="top"
+            android:background="@drawable/main_shape">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tamaño de la letra"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="#525252"
+                android:layout_gravity="center"
+                android:textSize="30dp"
+                />
+        </FrameLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="100sp"
+            android:layout_marginTop="80dp"
+            android:layout_height="100dp"
+            android:text="pequeño"
+            android:textSize="10sp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10sp"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="#525252"
+
+            android:background="@drawable/bottom_buttons_main" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="100sp"
+            android:layout_marginTop="80dp"
+            android:layout_marginRight="10sp"
+            android:layout_height="100dp"
+            android:layout_gravity="right"
+            android:text="grande"
+            android:textSize="20sp"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="#525252"
+
+            android:background="@drawable/bottom_buttons_main" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="100sp"
+            android:layout_marginTop="80dp"
+            android:layout_height="100dp"
+            android:textSize="15sp"
+            android:layout_gravity="center_horizontal"
+            android:text="mediano"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="#525252"
+
+            android:background="@drawable/bottom_buttons_main" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="top"
+            android:layout_marginTop="330dp"
+            android:background="@drawable/main_shape">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activar notificaciones"
+                android:fontFamily="@font/lato_bold"
+                android:layout_marginLeft="10sp"
+                android:textColor="#525252"
+                android:layout_gravity="center_vertical"
+                android:textSize="20dp"
+                />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical|right"
+                android:width="70sp"
+                android:height="30sp"
+                android:switchMinWidth="60sp"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="top"
+            android:layout_marginTop="220dp"
+            android:background="@drawable/main_shape">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Colores"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="#525252"
+                android:layout_gravity="center_horizontal"
+                android:textSize="30dp"
+                />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="30sp"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="10sp"
+                android:background="@drawable/bottom_buttons_main"/>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/dropdown_arrow"
+                android:layout_gravity="right|bottom"
+                android:layout_marginBottom="10sp"/>
+
+        </FrameLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_height="80dp"
+            android:text="guardar cambios"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="#525252"
+
+            android:background="@drawable/bottom_buttons_main" />
+
+
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
