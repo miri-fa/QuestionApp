@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ChooseFragment">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <EditText
+            android:id="@+id/title_rating_question"
+            android:layout_width="314dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/question_input"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:hint="Título de la pregunta"
+            android:inputType="text" />
+
+        <FrameLayout
+            android:layout_width="314dp"
+            android:layout_height="218dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50sp"
+            android:background="@drawable/question_input">
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="50sp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10sp"
+                android:numStars="5"
+                android:progressBackgroundTint="#818181"
+                android:progressTint="#FFDE48" />
+
+            <EditText
+                android:id="@+id/lower_extreme"
+                android:layout_width="300dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="90sp"
+                android:background="@drawable/textinput"
+                android:ems="10"
+                android:hint="Extremo izquierdo"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/higher_extreme"
+                android:layout_width="300dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="150sp"
+                android:background="@drawable/textinput"
+                android:ems="10"
+                android:hint="Extremo derecho"
+                android:inputType="text" />
+
+        </FrameLayout>
+
+
+
+    </FrameLayout>
+
+
+
+
+
+</FrameLayout>

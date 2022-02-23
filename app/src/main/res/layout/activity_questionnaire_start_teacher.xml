@@ -85,7 +85,39 @@
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="520dp"
-            />
+            >
+            <TextView
+                android:id="@+id/textEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="170sp"
+                android:layout_marginHorizontal="20sp"
+                android:fontFamily="@font/lato_bold"
+                android:textAlignment="center"
+                android:text="Introduce un título para el formulario:"
+                android:textColor="#EB6383"
+                android:textSize="25sp" />
+            <EditText
+                android:id="@+id/questionnaire_name_input"
+                android:layout_width="314dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="250sp"
+                android:background="@drawable/question_input"
+                android:layout_gravity="center_horizontal"
+                android:ems="10"
+                android:inputType="text" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/create_questionnaire"
+                android:layout_width="200sp"
+                android:layout_marginTop="370sp"
+                android:layout_height="70dp"
+                android:textColor="#FFE9C5"
+                android:background="@drawable/buttongradient"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/lato_bold"
+                android:text="Comenzar" />
+
+        </FrameLayout>
 
         <FrameLayout
             android:id="@+id/frameLayout3"
@@ -102,7 +134,6 @@
             app:layout_constraintVertical_bias="0.75">
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/create_questionnaire_button"
                 android:layout_width="180dp"
                 android:layout_height="match_parent"
                 android:text="crear encuesta"
@@ -112,16 +143,16 @@
                 android:background="@drawable/bottom_buttons_main" />
 
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="180dp"
-            android:layout_height="match_parent"
-            android:text="consultar encuestas"
-            android:fontFamily="@font/lato_bold"
-            android:textColor="#525252"
-            android:layout_gravity="left"
-            android:background="@drawable/bottom_buttons_main" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:text="consultar encuestas"
+                android:fontFamily="@font/lato_bold"
+                android:textColor="#525252"
+                android:layout_gravity="left"
+                android:background="@drawable/bottom_buttons_main" />
 
-    </FrameLayout>
+        </FrameLayout>
 
 
     </FrameLayout>

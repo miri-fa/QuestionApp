@@ -31,7 +31,31 @@
             >
         </activity>
         <activity
+            android:name=".ForgotPasswordActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Quest?on"
+            android:theme="@style/Theme.Question2.Fullscreen"
+            >
+        </activity>
+        <activity
+            android:name=".MakeQuestionnaireActivityTeacher"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Quest?on"
+            android:theme="@style/Theme.Question2.Fullscreen"
+            >
+        </activity>
+        <activity
             android:name=".MainActivityTeacher"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Quest?on"
+            android:theme="@style/Theme.Question2.Fullscreen"
+            >
+        </activity>
+        <activity
+            android:name=".CreateQuestionnaireActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
             android:label="Quest?on"
