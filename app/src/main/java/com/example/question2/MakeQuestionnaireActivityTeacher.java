@@ -112,8 +112,35 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
             }
         };
 
+        Button buttonCreateQuestion = (Button) findViewById(R.id.questionnaire_add_question);
+        buttonCreateQuestion.setOnClickListener(onClickListener3);
+
+        View.OnClickListener onClickListener4 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteQuestion();
+                String num = Integer.toString(count);
+                questionNumber.setText(num);
+                chooseFragment.restartSpinner();
+            }
+        };
+
+        Button buttonDeleteQuestion = (Button) findViewById(R.id.questionnaire_delete_question);
+        buttonDeleteQuestion.setOnClickListener(onClickListener4);
+
+        View.OnClickListener onClickListener5 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!questionnaire.isAtEndOfArray(count)){
+                    Question question = questionnaire.getQuestionFromPosition(count);
+                    count ++;
+                    fillQuestion(question);
+                }
+            }
+        };
+
         Button buttonNextQuestion = (Button) findViewById(R.id.questionnaire_advance_create);
-        buttonNextQuestion.setOnClickListener(onClickListener3);
+        buttonNextQuestion.setOnClickListener(onClickListener5);
 
     }
 
@@ -150,6 +177,40 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
         } if (choicesQuestion!=null){
             questionnaire.addQuestion(choicesQuestion);
          }
+    }
+
+    private void deleteQuestion(){
+        if (openAnswerQuestion!=null){
+            questionnaire.deleteQuestion(openAnswerQuestion);
+            openAnswerQuestion = null;
+        }if (ratingQuestion != null){
+            questionnaire.deleteQuestion(ratingQuestion);
+            ratingQuestion = null;
+        } if (choicesQuestion!=null){
+            questionnaire.deleteQuestion(choicesQuestion);
+        }
+    }
+
+    private void fillQuestion(Question question){
+        int pos = 0;
+        if (question instanceof ChoicesQuestion){
+            ChoicesQuestion q = (ChoicesQuestion) question;
+            if (q.isMultipleChoice()){
+                pos = 3;
+            } else {
+                pos = 2;
+            }
+            //Find a way to set title and questions to be seen and previewed
+
+        } else if (question instanceof OpenAnswerQuestion){
+            pos = 1;
+            //Set title
+
+        }else if (question instanceof ScoreQuestion){
+            pos = 4;
+            //Set title and left and right options maybe an interface would work????
+        }
+        chooseFragment.setSpinner(pos);
     }
 
     @Override

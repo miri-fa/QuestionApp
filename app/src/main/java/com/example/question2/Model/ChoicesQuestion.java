@@ -10,6 +10,7 @@ public class ChoicesQuestion extends Question{
 
     public ChoicesQuestion(){
         choices = new ArrayList<>();
+        multipleChoice = false;
     }
 
     public void addChoice(String choice){

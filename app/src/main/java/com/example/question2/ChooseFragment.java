@@ -76,4 +76,9 @@ public class ChooseFragment extends Fragment {
       spinner.setSelection(0);
       fragmentManager = getParentFragmentManager();
     }
+
+    public void setSpinner(int pos){
+      spinner.setSelection(pos);
+      fragmentManager = getParentFragmentManager();
+    }
 }

@@ -33,6 +33,22 @@ public class Questionnaire {
         questions.add(question);
     }
 
+    public void deleteQuestion (Question question) {questions.remove(question);}
+
+    public boolean isAtEndOfArray (int count){
+        boolean atEnd = false;
+        if (questions.size() == count){
+            atEnd = true;
+        }
+        return atEnd;
+    }
+
+    public Question getQuestionFromPosition (int pos){
+        Question question;
+        question = questions.get(pos);
+        return question;
+    }
+
     public boolean isPublished() {
         return published;
     }
