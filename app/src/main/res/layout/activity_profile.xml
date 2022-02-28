@@ -78,6 +78,7 @@
             android:background="@drawable/bottom_buttons_main" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/check_teams"
             android:layout_width="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_height="60dp"

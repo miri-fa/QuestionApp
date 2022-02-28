@@ -27,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivityTeacher extends AppCompatActivity {
+public class MainActivityStudent extends AppCompatActivity {
     ListView listView;
     Query query;
 
@@ -37,11 +37,12 @@ public class MainActivityTeacher extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_main_teacher);
+        setContentView(R.layout.activity_main_student);
 
-        listView = findViewById(R.id.teacher_main_list);
+        /*listView = findViewById(R.id.teacher_main_list);
         ArrayList<String> arrayList = new ArrayList<>();
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.main_list_item, R.id.label_main,arrayList);
+
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -80,17 +81,17 @@ public class MainActivityTeacher extends AppCompatActivity {
 
         Button buttonLogin = (Button) findViewById(R.id.create_questionnaire_button);
         buttonLogin.setOnClickListener(onClickListener1);
-
+*/
         View.OnClickListener onClickListener2 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(MainActivityTeacher.this, ProfileTeacherActivity.class);
-                MainActivityTeacher.this.finish();
+                Intent intent =new Intent(MainActivityStudent.this, ProfileStudentActivity.class);
+                MainActivityStudent.this.finish();
                 startActivity(intent);
             }
         };
 
-        Button buttonProfile = (Button) findViewById(R.id.profilemainteacher);
+        Button buttonProfile = (Button) findViewById(R.id.profilemainstudent);
         buttonProfile.setOnClickListener(onClickListener2);
 
     }

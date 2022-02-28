@@ -72,7 +72,7 @@
                 android:textSize="20dp"
                 />
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/createTeamTitle"
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:layout_marginTop="50sp"
@@ -81,11 +81,33 @@
             android:ems="10"
             android:inputType="textEmailAddress" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Código de acceso del nuevo equipo:"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="#525252"
+            android:layout_marginTop="90sp"
+            android:layout_marginLeft="10sp"
+            android:layout_gravity="left|top"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/createTeamPassword"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginTop="120sp"
+            android:background="@drawable/textinput"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="text" />
+
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/createTeamButton"
             android:layout_width="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_height="60dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="170dp"
             android:text="crear"
             android:fontFamily="@font/lato_bold"
             android:textColor="#525252"
@@ -96,12 +118,19 @@
             android:text="Listado de equipos:"
             android:fontFamily="@font/lato_bold"
             android:textColor="#525252"
-            android:layout_marginTop="180sp"
+            android:layout_marginTop="240sp"
             android:layout_marginLeft="10sp"
             android:layout_gravity="left|top"
             android:textSize="20dp"
             />
 
+        <ExpandableListView
+            android:id="@+id/TeacherTeamsList"
+            android:layout_width="match_parent"
+            android:layout_height="335dp"
+            android:layout_gravity="bottom">
+
+        </ExpandableListView>
 
     </FrameLayout>
 

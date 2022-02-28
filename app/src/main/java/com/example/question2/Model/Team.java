@@ -4,10 +4,15 @@ import java.util.ArrayList;
 
 public class Team {
     private String name;
-    private Teacher creator;
-    private ArrayList<Student> students;
+    private String creator;
+    private ArrayList<String> students;
+    private String accessCode;
 
-    public void addStudents (Student student){
+    public void setAccessCode (String code){ this.accessCode = code;}
+
+    public String getAccessCode (){return accessCode;}
+
+    public void addStudents (String student){
         this.students.add(student);
     }
 
@@ -19,19 +24,19 @@ public class Team {
         this.name = name;
     }
 
-    public Teacher getCreator() {
+    public String getCreator() {
         return creator;
     }
 
-    public void setCreator(Teacher creator) {
+    public void setCreator(String creator) {
         this.creator = creator;
     }
 
-    public ArrayList<Student> getStudents() {
+    public ArrayList<String> getStudents() {
         return students;
     }
 
-    public void setStudents(ArrayList<Student> students) {
+    public void setStudents(ArrayList<String> students) {
         this.students = students;
     }
 }

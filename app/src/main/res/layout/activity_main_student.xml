@@ -41,7 +41,7 @@
             android:background="@drawable/help" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/profilemain"
+            android:id="@+id/profilemainstudent"
             android:layout_width="90dp"
             android:layout_height="90dp"
             android:layout_gravity="center_vertical"

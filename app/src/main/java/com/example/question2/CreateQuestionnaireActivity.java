@@ -45,6 +45,20 @@ public class CreateQuestionnaireActivity extends AppCompatActivity{
 
         Button buttonLogin = (Button) findViewById(R.id.create_questionnaire);
         buttonLogin.setOnClickListener(onClickListener1);
+
+        View.OnClickListener onClickListener2 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivityTeacher.class);
+                CreateQuestionnaireActivity.this.finish();
+                startActivity(intent);
+            }
+        };
+
+        Button buttonGoBackMain = (Button) findViewById(R.id.goMainFromQuestionnaireTeacher);
+        buttonGoBackMain.setOnClickListener(onClickListener2);
+
+
     }
 
 

@@ -60,19 +60,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="left|top"
-            android:layout_marginLeft="10sp"
-            android:layout_marginTop="20sp"
+            android:text="Nombre del equipo:"
             android:fontFamily="@font/lato_bold"
-            android:text="Código del equipo a unirse:"
             android:textColor="#525252"
-            android:textSize="20dp" />
+            android:layout_marginTop="20sp"
+            android:layout_marginLeft="10sp"
+            android:layout_gravity="left|top"
+            android:textSize="20dp"
+            />
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/joinTeamTitle"
             android:layout_width="match_parent"
             android:layout_height="34dp"
             android:layout_marginTop="50sp"
@@ -81,12 +81,34 @@
             android:ems="10"
             android:inputType="textEmailAddress" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Código de acceso:"
+            android:fontFamily="@font/lato_bold"
+            android:textColor="#525252"
+            android:layout_marginTop="90sp"
+            android:layout_marginLeft="10sp"
+            android:layout_gravity="left|top"
+            android:textSize="20dp"
+            />
+        <EditText
+            android:id="@+id/joinTeamPassword"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_marginTop="120sp"
+            android:background="@drawable/textinput"
+            android:layout_gravity="center_horizontal"
+            android:ems="10"
+            android:inputType="text" />
+
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/joinTeamButton"
             android:layout_width="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_height="60dp"
-            android:layout_marginTop="100dp"
-            android:text="Unirse"
+            android:layout_marginTop="170dp"
+            android:text="unirse"
             android:fontFamily="@font/lato_bold"
             android:textColor="#525252"
             android:background="@drawable/bottom_buttons_main" />
@@ -96,12 +118,19 @@
             android:text="Listado de equipos:"
             android:fontFamily="@font/lato_bold"
             android:textColor="#525252"
-            android:layout_marginTop="180sp"
+            android:layout_marginTop="240sp"
             android:layout_marginLeft="10sp"
             android:layout_gravity="left|top"
             android:textSize="20dp"
             />
 
+        <ExpandableListView
+            android:id="@+id/StudentTeamsList"
+            android:layout_width="match_parent"
+            android:layout_height="335dp"
+            android:layout_gravity="bottom">
+
+        </ExpandableListView>
 
     </FrameLayout>
 
