@@ -34,6 +34,7 @@ public class OneChoiceFragment extends Fragment {
     private ArrayList<String> arrayList;
     private ArrayAdapter<String> adapter;
     private EditText newElement;
+    private String title;
     private EditText textTitle;
     private FragmentOneChoiceListener listener;
     private ChoicesQuestion q;
@@ -56,10 +57,18 @@ public class OneChoiceFragment extends Fragment {
         q.setMultipleChoice(false);
         ListView listView = view.findViewById(R.id.list_create_multiple_options);
         newElement = view.findViewById(R.id.input_multiple_choice);
+        textTitle = view.findViewById(R.id.title_open_question);
         arrayList = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(getActivity().getBaseContext(), R.layout.list_item, R.id.label,arrayList);
+        if (getArguments().getString("title")!=null) {
+            title = getArguments().getString("title");
+            textTitle.setText(title);
+            ArrayList<String> list = getArguments().getStringArrayList("questions");
+            for (String s: list){
+                arrayList.add(s);
+            }
+        }
+        adapter = new ArrayAdapter<String>(getActivity().getBaseContext(), R.layout.list_item_one_choice, R.id.label,arrayList);
         listView.setAdapter(adapter);
-
 
 
         Button btn = view.findViewById(R.id.add_option_open);
@@ -74,7 +83,6 @@ public class OneChoiceFragment extends Fragment {
             }
         });
 
-        textTitle = view.findViewById(R.id.title_open_question);
         textTitle.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

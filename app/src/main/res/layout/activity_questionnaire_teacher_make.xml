@@ -139,12 +139,24 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/questionnaire_back_create"
+                android:layout_width="53dp"
+                android:layout_height="48dp"
+                android:layout_gravity="left"
+                android:background="@drawable/question_arrow_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <FrameLayout
                 android:id="@+id/fragment_container"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="50sp"
                 android:layout_marginBottom="90sp"></FrameLayout>
+
 
 
             <androidx.appcompat.widget.AppCompatButton

@@ -5,12 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +18,6 @@ import com.example.question2.Model.OpenAnswerQuestion;
 import com.example.question2.Model.Question;
 import com.example.question2.Model.Questionnaire;
 import com.example.question2.Model.ScoreQuestion;
-import com.example.question2.Model.Teacher;
 import com.example.question2.Model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,13 +28,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class MakeQuestionnaireActivityTeacher extends AppCompatActivity implements OpenQuestionFragment.FragmentOpenQuestionListener, RatingQuestionFragment.FragmentRatingQuestionListener,
-OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMultipleChoiceListener{
+public class EditQuestionnaireActivity extends AppCompatActivity implements OpenQuestionFragment.FragmentOpenQuestionListener, RatingQuestionFragment.FragmentRatingQuestionListener,
+        OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMultipleChoiceListener{
     private static FragmentManager fragmentManager;
     private ArrayList<Question> questions;
     private String openQuestTitle;
@@ -66,10 +59,15 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_questionnaire_teacher_make);
-        questions = new ArrayList<Question>();
-        questionnaire = new Questionnaire();
+
+        //Get questionnaire from database
+        questionnaire = (Questionnaire) getIntent().getSerializableExtra("questionnaire");
+
+
+
+        questions = questionnaire.getQuestions();
         count = 1;
-        code="";
+        code = questionnaire.getCode();
         questionNumber = findViewById(R.id.numberMakeCount);
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction =fragmentManager.beginTransaction();
@@ -118,7 +116,7 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
         View.OnClickListener onClickListener2 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MakeQuestionnaireActivityTeacher.this, MainActivityTeacher.class));
+                startActivity(new Intent(EditQuestionnaireActivity.this, MainActivityTeacher.class));
 
             }
         };
@@ -229,7 +227,7 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
     }
 
     //This method adds question into the questionnaire class, for later save into the database
-     private void addQuestion(Boolean inserted){
+    private void addQuestion(Boolean inserted){
         Question q = new Question();
         q=null;
         if (openAnswerQuestion!=null){
@@ -241,7 +239,7 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
         } if (choicesQuestion!=null){
             q = choicesQuestion;
             choicesQuestion = null;
-         }
+        }
 
         if (q!=null) {
             if ((count - 1 == questionnaire.size())) {

@@ -21,13 +21,15 @@ import android.widget.Spinner;
 import com.example.question2.Model.OpenAnswerQuestion;
 import com.example.question2.Model.ScoreQuestion;
 
+import java.util.ArrayList;
+
 
 public class RatingQuestionFragment extends Fragment {
     private Spinner spinner;
     private FragmentManager fragmentManager;
     private EditText textTitle, lowerExtreme, higherExtreme;
     private FragmentRatingQuestionListener listener;
-    private String title, lower, higher;
+    private String title, lower, higher, getTitle, getLower, getHigher;
 
     public RatingQuestionFragment(){
 
@@ -43,6 +45,18 @@ public class RatingQuestionFragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_rating_question, container, false);
         ScoreQuestion question = new ScoreQuestion();
         textTitle = view.findViewById(R.id.title_rating_question);
+        lowerExtreme = view.findViewById(R.id.lower_extreme);
+        higherExtreme = view.findViewById(R.id.higher_extreme);
+
+        if (getArguments().getString("title")!=null) {
+            getTitle = getArguments().getString("title");
+            getLower = getArguments().getString("left");
+            getHigher = getArguments().getString("right");
+            textTitle.setText(getTitle);
+            lowerExtreme.setText(getLower);
+            higherExtreme.setText(getHigher);
+        }
+
         textTitle.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -62,7 +76,6 @@ public class RatingQuestionFragment extends Fragment {
             }
         });
 
-        lowerExtreme = view.findViewById(R.id.lower_extreme);
         lowerExtreme.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -82,7 +95,6 @@ public class RatingQuestionFragment extends Fragment {
             }
         });
 
-        higherExtreme = view.findViewById(R.id.higher_extreme);
         higherExtreme.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

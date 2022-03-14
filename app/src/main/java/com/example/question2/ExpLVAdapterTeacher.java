@@ -97,9 +97,53 @@ public class ExpLVAdapterTeacher extends BaseExpandableListAdapter {
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         String titleTeam = (String)getGroup(groupPosition);
-        convertView = LayoutInflater.from(context).inflate(R.layout.elv_team,null);
+        convertView = LayoutInflater.from(context).inflate(R.layout.elv_team_teacher,null);
         TextView textView = (TextView) convertView.findViewById(R.id.teamName);
         textView.setText(titleTeam);
+
+        ImageView delete = convertView.findViewById(R.id.deleteGroup);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("¿Quieres eliminar este grupo?");
+                builder.setCancelable(true);
+                builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String teamInfo = listTeams.get(groupPosition);
+                        teamInfo = teamInfo.replace("Equipo: ","");
+                        String[] splitString = teamInfo.split(System.lineSeparator());
+
+
+                        DatabaseReference teams = FirebaseDatabase.getInstance().getReference("teams");
+                        Query query = teams.orderByChild("name").equalTo(splitString[0]);
+                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot ds:snapshot.getChildren()) {
+                                    FirebaseDatabase.getInstance().getReference("teams/"+ds.getKey()).removeValue();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
         return convertView;
     }
 

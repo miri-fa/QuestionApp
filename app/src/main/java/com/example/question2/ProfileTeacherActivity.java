@@ -50,5 +50,17 @@ public class ProfileTeacherActivity extends AppCompatActivity {
         Button buttonTeams = (Button) findViewById(R.id.check_teams);
         buttonTeams.setOnClickListener(onClickListener1);
 
+        View.OnClickListener onClickListener2 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(ProfileTeacherActivity.this, LoginActivity.class);
+                ProfileTeacherActivity.this.finish();
+                startActivity(intent);
+            }
+        };
+
+        Button buttonExit = (Button) findViewById(R.id.close_session);
+        buttonExit.setOnClickListener(onClickListener2);
+
     }
 }

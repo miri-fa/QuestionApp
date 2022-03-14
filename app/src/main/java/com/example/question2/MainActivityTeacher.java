@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -30,6 +31,7 @@ import java.util.List;
 public class MainActivityTeacher extends AppCompatActivity {
     ListView listView;
     Query query;
+    Questionnaire questionnaire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +63,45 @@ public class MainActivityTeacher extends AppCompatActivity {
                 }
             }
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
 
+        //Get elements from database
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> listView, View itemView, int itemPosition, long itemId)
+            {
+                String text = listView.getItemAtPosition(itemPosition).toString().trim();
+                DatabaseReference questionnaires = FirebaseDatabase.getInstance().getReference("questionnaires");
+                query = questionnaires.orderByChild("title").equalTo(text);
+                query.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
 
+                            for (DataSnapshot ds : snapshot.getChildren()) {
+                                questionnaire = ds.getValue(Questionnaire.class);
+                            }
+                        }
+                    }
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                Intent intent = new Intent(MainActivityTeacher.this, EditQuestionnaireActivity.class);
+                intent = intent.putExtra("questionnaire",questionnaire);
+                MainActivityTeacher.this.finish();
+                startActivity(intent);
+            }
+        });
 
         View.OnClickListener onClickListener1 = new View.OnClickListener() {
             @Override

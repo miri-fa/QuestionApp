@@ -26,6 +26,7 @@ public class OpenQuestionFragment extends Fragment {
     private FragmentManager fragmentManager;
     private EditText textTitle;
     private FragmentOpenQuestionListener listener;
+    private String title;
 
     public OpenQuestionFragment(){
 
@@ -40,6 +41,13 @@ public class OpenQuestionFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_open_question, container, false);
         textTitle = view.findViewById(R.id.title_open_question);
+
+        //navigation filling
+        if (getArguments().getString("title")!=null) {
+            title = getArguments().getString("title");
+            textTitle.setText(title);
+        }
+
         textTitle.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

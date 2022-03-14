@@ -19,6 +19,7 @@
         <entry key="app/src/main/res/drawable/main_buttons.xml" value="0.3260416666666667" />
         <entry key="app/src/main/res/drawable/main_shape.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/drawable/profile.xml" value="0.321025641025641" />
+        <entry key="app/src/main/res/drawable/question_arrow_back.xml" value="0.1315" />
         <entry key="app/src/main/res/drawable/question_arrow_forward.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/question_input.xml" value="0.1695" />
         <entry key="app/src/main/res/drawable/settings.xml" value="0.18385416666666668" />
@@ -35,6 +36,7 @@
         <entry key="app/src/main/res/layout/activity_open_question_make.xml" value="0.20742753623188406" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_questionnaire_choose.xml" value="0.20742753623188406" />
+        <entry key="app/src/main/res/layout/activity_questionnaire_code.xml" value="0.2210144927536232" />
         <entry key="app/src/main/res/layout/activity_questionnaire_start_teacher.xml" value="0.14200090048969655" />
         <entry key="app/src/main/res/layout/activity_questionnaire_teacher_make.xml" value="0.24411594556725544" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.3098958333333333" />
@@ -46,13 +48,17 @@
         <entry key="app/src/main/res/layout/activity_teams_teacher.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/elv_child.xml" value="0.22826086956521738" />
         <entry key="app/src/main/res/layout/elv_team.xml" value="0.22826086956521738" />
+        <entry key="app/src/main/res/layout/elv_team_teacher.xml" value="0.2210144927536232" />
+        <entry key="app/src/main/res/layout/fragment_assign_code.xml" value="0.23641304347826086" />
         <entry key="app/src/main/res/layout/fragment_choose.xml" value="0.21195652173913043" />
+        <entry key="app/src/main/res/layout/fragment_generate_code.xml" value="0.23641304347826086" />
         <entry key="app/src/main/res/layout/fragment_multiple_choice.xml" value="0.21195652173913043" />
         <entry key="app/src/main/res/layout/fragment_one_choice.xml" value="0.21510416666666668" />
         <entry key="app/src/main/res/layout/fragment_open_question.xml" value="0.125" />
         <entry key="app/src/main/res/layout/fragment_rating_question.xml" value="0.21195652173913043" />
         <entry key="app/src/main/res/layout/frame_list_main.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.21195652173913043" />
+        <entry key="app/src/main/res/layout/list_item_one_chice.xml" value="0.2210144927536232" />
         <entry key="app/src/main/res/layout/login.xml" value="0.34561477930636986" />
         <entry key="app/src/main/res/layout/main.xml" value="0.3042838613226243" />
         <entry key="app/src/main/res/layout/main_list_item.xml" value="0.22826086956521738" />

@@ -4,14 +4,25 @@ import com.example.question2.Model.Question;
 import com.example.question2.Model.Student;
 import com.example.question2.Model.Teacher;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Questionnaire {
+public class Questionnaire implements Serializable {
     private String title;
     private boolean published;
     private ArrayList <Student> doneBy;
+    private String code;
     private String author;
     private ArrayList <Question> questions;
+
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public String getTitle() {
         return title;
@@ -20,6 +31,8 @@ public class Questionnaire {
     public Questionnaire(){
         questions = new ArrayList<>();
     }
+
+    public int size(){return questions.size();}
 
     public void setTitle(String title) {
         this.title = title;
@@ -33,7 +46,7 @@ public class Questionnaire {
         questions.add(question);
     }
 
-    public void deleteQuestion (Question question) {questions.remove(question);}
+    public void deleteQuestion (int index) {questions.remove(index);}
 
     public boolean isAtEndOfArray (int count){
         boolean atEnd = false;
@@ -44,9 +57,11 @@ public class Questionnaire {
     }
 
     public Question getQuestionFromPosition (int pos){
-        Question question;
-        question = questions.get(pos);
-        return question;
+        return questions.get(pos);
+    }
+
+    public void insertQuestion (int index, Question q){
+        questions.add(index, q);
     }
 
     public boolean isPublished() {
@@ -55,6 +70,10 @@ public class Questionnaire {
 
     public void setPublished(boolean published) {
         this.published = published;
+    }
+
+    public void setQuestion(int position, Question question){
+        questions.set(position,question);
     }
 
     public ArrayList<Student> getDoneBy() {
