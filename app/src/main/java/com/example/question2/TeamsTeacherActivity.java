@@ -84,7 +84,8 @@ public class TeamsTeacherActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()) {
-                            Toast.makeText(TeamsTeacherActivity.this, "El equipo ha sido creado con éxito", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TeamsTeacherActivity.this,
+                                    "El equipo ha sido creado con éxito", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -110,7 +111,8 @@ public class TeamsTeacherActivity extends AppCompatActivity {
                     for (DataSnapshot data : snapshot.getChildren()) {
                         String name = data.child("name").getValue(String.class);
                         String code = data.child("accessCode").getValue(String.class);
-                        GenericTypeIndicator<Map<String, String>> genericTypeIndicator = new GenericTypeIndicator<Map<String, String>>() {};
+                        GenericTypeIndicator<Map<String, String>> genericTypeIndicator =
+                                new GenericTypeIndicator<Map<String, String>>() {};
                         Map<String, String> map = data.child("students").getValue(genericTypeIndicator );
                         ArrayList<String> students = new ArrayList<>();
                         String nameAndCode = "Equipo: " + name + "\nCódigo de acceso: "

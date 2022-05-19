@@ -14,6 +14,8 @@ public class Questionnaire implements Serializable {
     private String code;
     private String author;
     private ArrayList <Question> questions;
+    private ArrayList<String> studentsAssgined;
+    private ArrayList<String> teamsAssigned;
 
 
     public String getCode() {
@@ -97,6 +99,29 @@ public class Questionnaire implements Serializable {
     }
 
     public void setQuestions(ArrayList<Question> questions) {
+        this.questions = new ArrayList<>();
         this.questions = (ArrayList<Question>) questions.clone();
+    }
+    public ArrayList<String> getStudentsAssgined() {
+        return studentsAssgined;
+    }
+
+    public void setStudentsAssgined(ArrayList<String> students) {
+        this.studentsAssgined = new ArrayList<>();
+        this.studentsAssgined = (ArrayList<String>) students.clone();
+    }
+    public ArrayList<String> getTeamsAssigned() {
+        return teamsAssigned;
+    }
+
+    public void setTeamsAssigned(ArrayList<String> teams) {
+        this.teamsAssigned = new ArrayList<>();
+        this.teamsAssigned = (ArrayList<String>) teams.clone();
+    }
+    public void addStudentAssigned (int index, String s){
+        studentsAssgined.add(index, s);
+    }
+    public void addTeamAssigned (int index, String s){
+        teamsAssigned.add(index, s);
     }
 }

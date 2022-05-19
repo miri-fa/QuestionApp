@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ChooseFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/title_open_question_complete"
+            android:layout_width="314dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/question_input"
+            android:ems="10"
+            android:text="Título de la pregunta"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/openquestionanswercomplete"
+            android:layout_width="314dp"
+            android:layout_height="200dp"
+            android:layout_below="@+id/title_open_question_complete"
+            android:inputType="text|textMultiLine"
+            android:gravity="top"
+            android:layout_marginTop="25dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/question_input"
+            android:ems="10"
+           >
+
+        </EditText>
+
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

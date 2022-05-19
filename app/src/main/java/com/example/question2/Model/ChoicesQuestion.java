@@ -1,15 +1,17 @@
 package com.example.question2.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ChoicesQuestion extends Question{
+public class ChoicesQuestion extends Question implements Serializable {
     private boolean multipleChoice;
     private ArrayList<String> choices;
-    private HashMap <Student,ArrayList<String>> answers;
+    private ArrayList<String> answers;
 
     public ChoicesQuestion(){
         choices = new ArrayList<>();
+        answers = new ArrayList<>();
         multipleChoice = false;
     }
 
@@ -17,8 +19,8 @@ public class ChoicesQuestion extends Question{
         choices.add(choice);
     }
 
-    public void addAnswers(Student student, ArrayList<String> answer){
-        this.answers.put(student,answer);
+    public void addAnswers(String answers){
+        this.answers.add(answers);
     }
 
     public boolean isMultipleChoice() {
@@ -37,11 +39,12 @@ public class ChoicesQuestion extends Question{
         this.choices = choices;
     }
 
-    public HashMap<Student, ArrayList<String>> getAnswers() {
+    public ArrayList<String> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(HashMap<Student, ArrayList<String>> answers) {
-        this.answers = answers;
+    public void setAnswers(ArrayList<String> answers) {
+        this.answers = new ArrayList<>();
+        this.answers = (ArrayList<String>) answers.clone();
     }
 }

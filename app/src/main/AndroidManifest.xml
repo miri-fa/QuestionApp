@@ -31,6 +31,29 @@
             >
         </activity>
         <activity
+            android:name=".FillQuestionnaireActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Quest?on"
+            android:theme="@style/Theme.Question2.Fullscreen"
+            >
+        </activity>
+        <activity
+            android:name=".SeeAnswersActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Quest?on"
+            android:theme="@style/Theme.Question2.Fullscreen"
+            >
+        </activity>
+        <activity
+            android:name=".MakeQuestionnaireActivityStudent"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:label="Quest?on"
+            android:theme="@style/Theme.Question2.Fullscreen"
+            />
+        <activity
             android:name=".EditQuestionnaireActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"

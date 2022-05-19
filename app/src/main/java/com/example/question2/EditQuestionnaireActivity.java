@@ -7,6 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Random;
@@ -39,7 +41,7 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
     private User userProfile;
     private FirebaseUser user;
     private DatabaseReference reference;
-    private String userID;
+    private String questionnaireID,userID;
     private String code;
     private OpenAnswerQuestion openAnswerQuestion;
     private ScoreQuestion ratingQuestion;
@@ -61,19 +63,51 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
         setContentView(R.layout.activity_questionnaire_teacher_make);
 
         //Get questionnaire from database
-        questionnaire = (Questionnaire) getIntent().getSerializableExtra("questionnaire");
-
-
-
-        questions = questionnaire.getQuestions();
-        count = 1;
-        code = questionnaire.getCode();
-        questionNumber = findViewById(R.id.numberMakeCount);
+        questionnaire = new Questionnaire();
+        String title = getIntent().getStringExtra("title");
+        questions = new ArrayList<>();
         fragmentManager = getSupportFragmentManager();
         fragmentTransaction =fragmentManager.beginTransaction();
         chooseFragment = new ChooseFragment();
         fragmentTransaction.add(R.id.fragment_container,chooseFragment,null);
         fragmentTransaction.commit();
+        DatabaseReference questionnaires = FirebaseDatabase.getInstance().getReference("questionnaires");
+        Query query = questionnaires.orderByChild("title").equalTo(title);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+
+                    for (DataSnapshot ds : snapshot.getChildren()) {
+                        code = ds.child("code").getValue(String.class);
+                        questionnaireID = ds.getKey();
+                        for (DataSnapshot data : ds.child("questions").getChildren()){
+                            System.out.println("Valor de data: "+data.getValue());
+                            Question q = data.getValue(Question.class);
+                            if (q.getType()==1){
+                                questions.add(data.getValue(OpenAnswerQuestion.class));
+                            }else if (q.getType()==2){
+                                questions.add(data.getValue(ChoicesQuestion.class));
+                            }else if (q.getType()==3){
+                                questions.add(data.getValue(ScoreQuestion.class));
+                            }
+                        }
+                        questionnaire.setQuestions(questions);
+                        count = 1;
+                        questionNumber = findViewById(R.id.numberMakeCount);
+                        fillQuestion(questionnaire.getQuestionFromPosition(0));
+                    }
+                }
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
 
         buttonFinish = (Button) findViewById(R.id.create_questionnaire);
         buttonMainPage = (Button) findViewById(R.id.create_to_see_button);
@@ -86,26 +120,13 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
             @Override
             public void onClick(View v) {
                 createQuestionnaire();
-                FirebaseDatabase.getInstance().getReference("questionnaires").push()
-                        .setValue(questionnaire).addOnCompleteListener(new OnCompleteListener<Void>() {
+                FirebaseDatabase.getInstance().getReference("questionnaires/"+questionnaireID).
+                        child("questions").setValue(questionnaire.getQuestions()).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()) {
-                            GenerateCodeFragment generateCodeFragment = new GenerateCodeFragment();
-                            Bundle args = new Bundle();
-
-                            questionNumber.setVisibility(View.GONE);
-                            buttonCreateQuestion.setVisibility(View.GONE);
-                            buttonBeforeQuestion.setVisibility(View.GONE);
-                            buttonDeleteQuestion.setVisibility(View.GONE);
-                            buttonNextQuestion.setVisibility(View.GONE);
-                            buttonFinish.setVisibility(View.GONE);
-
-                            args.putString("code", code);
-                            generateCodeFragment.setArguments(args);
-                            fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragment_container,generateCodeFragment);
-                            fragmentTransaction.commit();
+                            Toast.makeText(getApplicationContext(),"The questionnaire is saved",Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(EditQuestionnaireActivity.this, MainActivityTeacher.class));
                         }
                     }
                 });
@@ -199,12 +220,7 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
 
 
     private Questionnaire createQuestionnaire(){
-        repeated = true;
-        while (repeated){
-            code = generateCode();
-            repeated = checkCode(code);
-        }
-        questionnaire.setCode(code);
+
         questionnaire.setTitle(getIntent().getStringExtra("title"));
         addQuestion(false);
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -232,12 +248,15 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
         q=null;
         if (openAnswerQuestion!=null){
             q = openAnswerQuestion;
+            q.setType(1);
             openAnswerQuestion = null;
         }if (ratingQuestion != null){
             q = ratingQuestion;
+            q.setType(3);
             ratingQuestion = null;
         } if (choicesQuestion!=null){
             q = choicesQuestion;
+            q.setType(2);
             choicesQuestion = null;
         }
 

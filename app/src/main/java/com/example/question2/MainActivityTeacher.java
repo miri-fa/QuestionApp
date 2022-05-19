@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,10 +18,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.question2.Model.Questionnaire;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import android.widget.AdapterView.OnItemClickListener;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
@@ -42,6 +43,18 @@ public class MainActivityTeacher extends AppCompatActivity {
         setContentView(R.layout.activity_main_teacher);
 
         listView = findViewById(R.id.teacher_main_list);
+        listView.setOnItemClickListener(new OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) { 
+                String text = listView.getItemAtPosition(position).toString().trim();
+                Intent intent = new Intent(MainActivityTeacher.this, SeeAnswersActivity.class);
+                intent = intent.putExtra("title",text);
+                intent = intent.putExtra("role","2");
+                MainActivityTeacher.this.finish();
+                startActivity(intent);
+            } 
+        });
+
         ArrayList<String> arrayList = new ArrayList<>();
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.main_list_item, R.id.label_main,arrayList);
 
@@ -71,37 +84,8 @@ public class MainActivityTeacher extends AppCompatActivity {
         });
 
         //Get elements from database
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> listView, View itemView, int itemPosition, long itemId)
-            {
-                String text = listView.getItemAtPosition(itemPosition).toString().trim();
-                DatabaseReference questionnaires = FirebaseDatabase.getInstance().getReference("questionnaires");
-                query = questionnaires.orderByChild("title").equalTo(text);
-                query.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
-
-                            for (DataSnapshot ds : snapshot.getChildren()) {
-                                questionnaire = ds.getValue(Questionnaire.class);
-                            }
-                        }
-                    }
 
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-                Intent intent = new Intent(MainActivityTeacher.this, EditQuestionnaireActivity.class);
-                intent = intent.putExtra("questionnaire",questionnaire);
-                MainActivityTeacher.this.finish();
-                startActivity(intent);
-            }
-        });
 
         View.OnClickListener onClickListener1 = new View.OnClickListener() {
             @Override

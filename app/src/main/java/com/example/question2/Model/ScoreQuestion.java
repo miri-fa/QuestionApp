@@ -1,13 +1,19 @@
 package com.example.question2.Model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ScoreQuestion extends Question{
+public class ScoreQuestion extends Question implements Serializable {
     private String lowerSide, higherSide;
-    private HashMap<Student,Integer> answers;
+    private ArrayList<String> answers;
 
-    public void addAnswers(Student student, Integer answer){
-        this.answers.put(student,answer);
+    public ScoreQuestion(){
+        answers = new ArrayList<>();
+    }
+
+    public void addAnswers(String answer){
+        this.answers.add(answer);
     }
 
     public String getLowerSide() {
@@ -26,11 +32,11 @@ public class ScoreQuestion extends Question{
         this.higherSide = higherSide;
     }
 
-    public HashMap<Student, Integer> getAnswers() {
+    public ArrayList<String> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(HashMap<Student, Integer> answers) {
+    public void setAnswers(ArrayList<String> answers) {
         this.answers = answers;
     }
 }

@@ -234,12 +234,15 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
         q=null;
         if (openAnswerQuestion!=null){
             q = openAnswerQuestion;
+            q.setType(1);
             openAnswerQuestion = null;
         }if (ratingQuestion != null){
             q = ratingQuestion;
+            q.setType(3);
             ratingQuestion = null;
         } if (choicesQuestion!=null){
             q = choicesQuestion;
+            q.setType(2);
             choicesQuestion = null;
          }
 

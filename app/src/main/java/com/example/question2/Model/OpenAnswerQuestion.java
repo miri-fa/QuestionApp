@@ -1,20 +1,30 @@
 package com.example.question2.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class OpenAnswerQuestion extends Question{
-    private HashMap<Student,String> answers;
+public class OpenAnswerQuestion extends Question implements Serializable {
+    private ArrayList<String> answers;
 
-    public HashMap<Student, String> getAnswers() {
+    public OpenAnswerQuestion(){
+        answers = new ArrayList<>();
+    }
+
+    public ArrayList<String> getAnswers() {
         return answers;
     }
 
-    public void addAnswers(Student student, String answer){
-        this.answers.put(student,answer);
+    public void addAnswers(String answer){
+        this.answers.add(answer);
     }
 
-    public void setAnswers(HashMap<Student, String> answers) {
-        this.answers = answers;
+    public void setAnswers(ArrayList<String> answers) {
+        this.answers = new ArrayList<>();
+        this.answers = (ArrayList<String>) answers.clone();
+    }
+
+    public void addAnswer(String answer) {
+        this.answers.add(answer);
     }
 }

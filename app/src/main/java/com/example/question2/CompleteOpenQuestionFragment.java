@@ -17,39 +17,49 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.question2.Model.OpenAnswerQuestion;
 
 
-public class OpenQuestionFragment extends Fragment {
+public class CompleteOpenQuestionFragment extends Fragment {
     private Spinner spinner;
     private FragmentManager fragmentManager;
-    private EditText textTitle;
-    private FragmentOpenQuestionListener listener;
+    private TextView textTitle;
+    private EditText answerText;
+    private FragmentCompleteOpenQuestionListener listener;
+    private int position;
     private String title;
 
-    public OpenQuestionFragment(){
+    public CompleteOpenQuestionFragment(){
 
     }
-    public interface FragmentOpenQuestionListener{
-        void onInputOpenQuestionSent(OpenAnswerQuestion openAnswerQuestion);
+    public interface FragmentCompleteOpenQuestionListener{
+        void onInputOpenQuestionSent(String openQuestionAnswer, int pos);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_open_question, container, false);
-        textTitle = view.findViewById(R.id.title_open_question);
+        View view =inflater.inflate(R.layout.fragment_complete_open_question, container, false);
+        textTitle = view.findViewById(R.id.title_open_question_complete);
 
         //navigation filling
 
         if (getArguments().getString("title")!=null) {
             title = getArguments().getString("title");
+            position = getArguments().getInt("position");
             textTitle.setText(title);
+            if ((getArguments().getString("answer")!=null)&&(getArguments().getString("answer")!="")){
+                String answer =getArguments().getString("answer");
+                answerText = view.findViewById(R.id.openquestionanswercomplete);
+                answerText.setText(answer);
+            }
         }
 
-        textTitle.addTextChangedListener(new TextWatcher() {
+        answerText = view.findViewById(R.id.openquestionanswercomplete);
+        answerText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -57,9 +67,7 @@ public class OpenQuestionFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                OpenAnswerQuestion q = new OpenAnswerQuestion();
-                q.setTitle(textTitle.getText().toString());
-                listener.onInputOpenQuestionSent(q);
+                listener.onInputOpenQuestionSent(answerText.getText().toString(),position);
             }
 
             @Override
@@ -75,8 +83,8 @@ public class OpenQuestionFragment extends Fragment {
     @Override
     public void onAttach(Context context){
         super.onAttach(context);
-        if (context instanceof FragmentOpenQuestionListener){
-            listener = (FragmentOpenQuestionListener) context;
+        if (context instanceof FragmentCompleteOpenQuestionListener){
+            listener = (FragmentCompleteOpenQuestionListener) context;
         }
     }
 

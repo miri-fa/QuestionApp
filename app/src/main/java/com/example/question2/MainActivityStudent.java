@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -39,7 +40,20 @@ public class MainActivityStudent extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main_student);
 
-        /*listView = findViewById(R.id.teacher_main_list);
+
+        listView = findViewById(R.id.student_main_list);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String text = listView.getItemAtPosition(position).toString().trim();
+                Intent intent = new Intent(MainActivityStudent.this, SeeAnswersActivity.class);
+                intent = intent.putExtra("title",text);
+                intent = intent.putExtra("role","1");
+                MainActivityStudent.this.finish();
+                startActivity(intent);
+            }
+        });
+
         ArrayList<String> arrayList = new ArrayList<>();
         ArrayAdapter adapter = new ArrayAdapter<String>(this, R.layout.main_list_item, R.id.label_main,arrayList);
 
@@ -47,8 +61,7 @@ public class MainActivityStudent extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
         DatabaseReference questionnaires = FirebaseDatabase.getInstance().getReference("questionnaires");
-        query = questionnaires.orderByChild("author").equalTo(user.getEmail());
-        query.addValueEventListener(new ValueEventListener() {
+        questionnaires.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
@@ -73,15 +86,15 @@ public class MainActivityStudent extends AppCompatActivity {
         View.OnClickListener onClickListener1 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(MainActivityTeacher.this, CreateQuestionnaireActivity.class);
-                MainActivityTeacher.this.finish();
+                Intent intent =new Intent(MainActivityStudent.this, FillQuestionnaireActivity.class);
+                MainActivityStudent.this.finish();
                 startActivity(intent);
             }
         };
 
-        Button buttonLogin = (Button) findViewById(R.id.create_questionnaire_button);
+        Button buttonLogin = (Button) findViewById(R.id.fill_questionnaire_button);
         buttonLogin.setOnClickListener(onClickListener1);
-*/
+
         View.OnClickListener onClickListener2 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
