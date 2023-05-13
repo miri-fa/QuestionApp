@@ -11,9 +11,13 @@
         <entry key="app/src/main/res/drawable/arrow_question_forward.xml" value="0.164" />
         <entry key="app/src/main/res/drawable/bottom_buttons_main.xml" value="0.3260416666666667" />
         <entry key="app/src/main/res/drawable/buttongradient.xml" value="0.321025641025641" />
+        <entry key="app/src/main/res/drawable/close.xml" value="0.246" />
         <entry key="app/src/main/res/drawable/delete.xml" value="0.125" />
         <entry key="app/src/main/res/drawable/dropdown_arrow.xml" value="0.321025641025641" />
+        <entry key="app/src/main/res/drawable/edit.xml" value="0.126" />
+        <entry key="app/src/main/res/drawable/excel.xml" value="0.162" />
         <entry key="app/src/main/res/drawable/help.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/drawable/help_input.xml" value="0.162" />
         <entry key="app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/main_buttons.xml" value="0.3260416666666667" />
@@ -31,7 +35,7 @@
         <entry key="app/src/main/res/layout/activity_finish_making_questionnaire.xml" value="0.20742753623188406" />
         <entry key="app/src/main/res/layout/activity_fullscreen.xml" value="0.11799384423063981" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.30932971014492755" />
-        <entry key="app/src/main/res/layout/activity_main_student.xml" value="0.26132246376811596" />
+        <entry key="app/src/main/res/layout/activity_main_student.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main_teacher.xml" value="0.26132246376811596" />
         <entry key="app/src/main/res/layout/activity_multiple_choice_make.xml" value="0.7532894736842105" />
         <entry key="app/src/main/res/layout/activity_one_choice_make.xml" value="0.20742753623188406" />
@@ -42,7 +46,7 @@
         <entry key="app/src/main/res/layout/activity_questionnaire_start_student.xml" value="0.23641304347826086" />
         <entry key="app/src/main/res/layout/activity_questionnaire_start_teacher.xml" value="0.14200090048969655" />
         <entry key="app/src/main/res/layout/activity_questionnaire_student_amke.xml" value="0.23641304347826086" />
-        <entry key="app/src/main/res/layout/activity_questionnaire_student_make.xml" value="0.15070921985815602" />
+        <entry key="app/src/main/res/layout/activity_questionnaire_student_make.xml" value="0.19481932728003104" />
         <entry key="app/src/main/res/layout/activity_questionnaire_teacher_make.xml" value="0.24411594556725544" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.335" />
@@ -65,6 +69,7 @@
         <entry key="app/src/main/res/layout/fragment_complete_open_question.xml" value="0.23641304347826086" />
         <entry key="app/src/main/res/layout/fragment_complete_rating_question.xml" value="0.23641304347826086" />
         <entry key="app/src/main/res/layout/fragment_generate_code.xml" value="0.24136047363281254" />
+        <entry key="app/src/main/res/layout/fragment_help.xml" value="0.20606884057971014" />
         <entry key="app/src/main/res/layout/fragment_multiple_choice.xml" value="0.21195652173913043" />
         <entry key="app/src/main/res/layout/fragment_one_choice.xml" value="0.21510416666666668" />
         <entry key="app/src/main/res/layout/fragment_open_question.xml" value="0.125" />
@@ -72,6 +77,7 @@
         <entry key="app/src/main/res/layout/frame_list_main.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/list_item.xml" value="0.21195652173913043" />
         <entry key="app/src/main/res/layout/list_item_one_chice.xml" value="0.2210144927536232" />
+        <entry key="app/src/main/res/layout/list_item_one_choice.xml" value="0.20606884057971014" />
         <entry key="app/src/main/res/layout/login.xml" value="0.34561477930636986" />
         <entry key="app/src/main/res/layout/main.xml" value="0.3042838613226243" />
         <entry key="app/src/main/res/layout/main_list_item.xml" value="0.22826086956521738" />

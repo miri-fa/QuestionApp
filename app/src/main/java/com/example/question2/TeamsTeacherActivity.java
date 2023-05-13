@@ -94,6 +94,18 @@ public class TeamsTeacherActivity extends AppCompatActivity {
         createTeamButton = findViewById(R.id.createTeamButton);
         createTeamButton.setOnClickListener(onClickListener1);
 
+        View.OnClickListener onClickListener3 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(TeamsTeacherActivity.this, ProfileTeacherActivity.class);
+                TeamsTeacherActivity.this.finish();
+                startActivity(intent);
+            }
+        };
+
+        Button buttonBack = (Button) findViewById(R.id.settingsGoBackTeacher);
+        buttonBack.setOnClickListener(onClickListener3);
+
     }
 
     private void loadData(){

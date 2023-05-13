@@ -111,6 +111,17 @@ public class TeamsStudentActivity extends AppCompatActivity {
 
             }
         });
+        View.OnClickListener onClickListener3 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(TeamsStudentActivity.this, ProfileStudentActivity.class);
+                TeamsStudentActivity.this.finish();
+                startActivity(intent);
+            }
+        };
+
+        Button buttonBack = (Button) findViewById(R.id.settingsGoBackStudent);
+        buttonBack.setOnClickListener(onClickListener3);
 
 
     }

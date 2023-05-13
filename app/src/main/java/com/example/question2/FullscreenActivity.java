@@ -8,6 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -19,8 +20,17 @@ public class FullscreenActivity extends AppCompatActivity implements View.OnTouc
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_start);
-        TextView title = findViewById(R.id.title1);
-        title.setOnTouchListener(this);
+        Button start = findViewById(R.id.start);
+        View.OnClickListener onClickListener1 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(FullscreenActivity.this, LoginActivity.class);
+                FullscreenActivity.this.finish();
+                startActivity(intent);
+            }
+        };
+
+        start.setOnClickListener(onClickListener1);
 
     }
     public boolean onTouch(View view, MotionEvent event){
@@ -31,4 +41,5 @@ public class FullscreenActivity extends AppCompatActivity implements View.OnTouc
         }
         return true;
     }
+
 }

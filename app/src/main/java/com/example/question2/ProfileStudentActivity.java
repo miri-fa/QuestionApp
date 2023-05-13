@@ -9,6 +9,7 @@ import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +37,11 @@ public class ProfileStudentActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_profile);
-
+        TextView name = findViewById(R.id.profileName);
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        name.setText(user.getEmail());
+        TextView type = findViewById(R.id.profileType);
+        type.setText("Estudiante");
 
         View.OnClickListener onClickListener1 = new View.OnClickListener() {
             @Override
@@ -61,6 +66,18 @@ public class ProfileStudentActivity extends AppCompatActivity {
 
         Button buttonExit = (Button) findViewById(R.id.close_session);
         buttonExit.setOnClickListener(onClickListener2);
+
+        View.OnClickListener onClickListener3 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(ProfileStudentActivity.this, MainActivityStudent.class);
+                ProfileStudentActivity.this.finish();
+                startActivity(intent);
+            }
+        };
+
+        Button buttonBack = (Button) findViewById(R.id.settingsGoBack);
+        buttonBack.setOnClickListener(onClickListener3);
 
     }
 }

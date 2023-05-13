@@ -1,6 +1,8 @@
 package com.example.question2;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.CursorJoiner;
 import android.os.Bundle;
 
@@ -67,8 +69,32 @@ public class MultipleChoiceFragment extends Fragment {
                 arrayList.add(s);
             }
         }
-        adapter = new ArrayAdapter<String>(getActivity().getBaseContext(), R.layout.list_item, R.id.label,arrayList);
+        adapter = new ArrayAdapter<String>(getActivity().getBaseContext(), android.R.layout.simple_list_item_1, android.R.id.text1,arrayList);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("¿Quieres eliminar esta pregunta?");
+                builder.setCancelable(true);
+                builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        arrayList.remove(pos);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
 
 
 

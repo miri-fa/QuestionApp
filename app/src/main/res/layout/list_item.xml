@@ -3,13 +3,11 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:clickable="true" >
-    <CheckBox
-        android:id="@+id/check"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:focusable="false"
-        android:text="" />
+    <ImageView
+        android:id="@+id/deleteList"
+        android:background="@drawable/delete"
+        android:layout_width="20dp"
+        android:layout_height="20dp"/>
     <TextView
         android:id="@+id/label"
         android:layout_width="0dp"

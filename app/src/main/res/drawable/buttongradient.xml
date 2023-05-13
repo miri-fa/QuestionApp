@@ -5,9 +5,9 @@
     android:shape="rectangle">
     <!--  Gradient Bg for listrow -->
     <gradient
-        android:startColor="#EB6383"
-        android:centerColor="#F37F9A"
-        android:endColor="#F09FB2"
+        android:startColor="#f4a0bf"
+        android:centerColor="#f4a0bf"
+        android:endColor="#F4a0bf"
         android:type="linear"
         android:angle="45" />
     <corners android:radius="20dp"/>

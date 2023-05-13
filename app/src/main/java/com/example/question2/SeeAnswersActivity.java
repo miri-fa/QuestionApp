@@ -1,7 +1,10 @@
 package com.example.question2;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -12,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -31,6 +35,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -86,7 +103,85 @@ public class SeeAnswersActivity extends AppCompatActivity implements
             };
 
             Button editButton = (Button) findViewById(R.id.edit_questionnaire);
+
             editButton.setOnClickListener(onClickListener1);
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE},PackageManager.PERMISSION_GRANTED);
+            View.OnClickListener onClickListener2 = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    HSSFWorkbook wb = new HSSFWorkbook();
+                    int cell = 0;
+                    HSSFSheet sheet = wb.createSheet();
+
+                    HSSFRow rowExcel;
+                    int row = 0;
+                    for (Question q: questionnaire.getQuestions()){
+                        rowExcel = sheet.createRow(row);
+                        row++;
+                    }
+                    for (Question q: questionnaire.getQuestions()) {
+                        row = 0;
+                        sheet.getRow(row).createCell(cell).setCellValue(q.getTitle());
+
+                        if (q.getType()==1){
+                            OpenAnswerQuestion questionAnswers = (OpenAnswerQuestion) q;
+                            for(String answer : questionAnswers.getAnswers()){
+                                row++;
+                                sheet.getRow(row).createCell(cell).setCellValue(answer);
+                            }
+                        }else if (q.getType()==2){
+                            ChoicesQuestion questionAnswers = (ChoicesQuestion) q;
+                            //Aquí hay que convertir los números a las respuestas como string
+
+                            for(String answer : questionAnswers.getAnswers()){
+                                row++;
+
+                                String[] parts = answer.split(" ");
+                                String phrase = "";
+                                for (int i = 0; i< parts.length; i++) {
+                                    if (i != parts.length - 1) {
+                                        phrase += questionAnswers.getChoice(Integer.parseInt(parts[i])) + "//";
+                                    } else {
+                                        phrase += questionAnswers.getChoice(Integer.parseInt(parts[i]));
+                                    }
+                                }
+                                sheet.getRow(row).createCell(cell).setCellValue(phrase);
+                            }
+                        }else{
+                            ScoreQuestion questionAnswers = (ScoreQuestion) q;
+                            for(String answer : questionAnswers.getAnswers()){
+                                row++;
+                                sheet.getRow(row).createCell(cell).setCellValue(answer);
+                            }
+                        }
+                        cell++;
+                    }
+                    //Get path of the downloads phone directory
+                    File filePath = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"/"+questionnaire.getTitle()+".xlsx");
+                    System.out.println("PATH: "+filePath);
+                    try {
+                    if (!filePath.exists()){
+
+                            filePath.createNewFile();
+                    }
+
+                        FileOutputStream fileOS = new FileOutputStream(filePath);
+                    wb.write(fileOS);
+                    if(fileOS!=null){
+                        fileOS.flush();
+                        fileOS.close();
+                        Toast.makeText(SeeAnswersActivity.this,
+                                "El archivo .xlsx se ha guardado en la carpeta de download con éxito", Toast.LENGTH_SHORT).show();
+                    }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+
+            Button excelButton = (Button) findViewById(R.id.excel);
+            excelButton.setOnClickListener(onClickListener2);
         }
 
         //Initialize everything
@@ -124,9 +219,12 @@ public class SeeAnswersActivity extends AppCompatActivity implements
                             }
                         }
                         questionnaire.setQuestions(questions);
+                        questionnaire.setTitle(ds.child("title").getValue(String.class));
                         count = 1;
                         questionNumber = findViewById(R.id.numberMakeCount);
                         fillQuestion(questionnaire.getQuestionFromPosition(0),0);
+                        //TextView codeView = findViewById(R.id.code);
+                        //codeView.setText(code);
                     }
                 }
             }

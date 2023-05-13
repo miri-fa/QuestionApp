@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/finalbg"
     android:theme="@style/ThemeOverlay.Question2.FullscreenContainer"
     tools:context=".FullscreenActivity">
 
@@ -19,7 +19,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/settingsrGoBack"
+            android:id="@+id/settingsGoBackStudent"
             android:layout_width="53dp"
             android:layout_height="48dp"
 
@@ -36,12 +36,12 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:fontFamily="@font/pacifico_normal"
-            android:shadowColor="#B64A63"
             android:shadowDx="5"
             android:shadowDy="5"
             android:shadowRadius="5"
             android:text="Equipos"
-            android:textColor="#FA9191"
+            android:shadowColor="#f4a0bf"
+            android:textColor="#faf0d7"
             android:textSize="40sp" />
 
 
@@ -65,7 +65,7 @@
             android:layout_height="wrap_content"
             android:text="Nombre del equipo:"
             android:fontFamily="@font/lato_bold"
-            android:textColor="#525252"
+            android:textColor="#faf0d7"
             android:layout_marginTop="20sp"
             android:layout_marginLeft="10sp"
             android:layout_gravity="left|top"
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:text="Código de acceso:"
             android:fontFamily="@font/lato_bold"
-            android:textColor="#525252"
+            android:textColor="#faf0d7"
             android:layout_marginTop="90sp"
             android:layout_marginLeft="10sp"
             android:layout_gravity="left|top"
@@ -110,14 +110,14 @@
             android:layout_marginTop="170dp"
             android:text="unirse"
             android:fontFamily="@font/lato_bold"
-            android:textColor="#525252"
+            android:textColor="#fff"
             android:background="@drawable/bottom_buttons_main" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Listado de equipos:"
             android:fontFamily="@font/lato_bold"
-            android:textColor="#525252"
+            android:textColor="#faf0d7"
             android:layout_marginTop="240sp"
             android:layout_marginLeft="10sp"
             android:layout_gravity="left|top"

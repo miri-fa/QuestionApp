@@ -18,8 +18,8 @@
         android:id="@+id/deleteGroup"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="3dp"
         android:layout_marginLeft="300dp"
+        android:layout_marginTop="3dp"
         android:background="@drawable/delete"></ImageView>
 
 </RelativeLayout>

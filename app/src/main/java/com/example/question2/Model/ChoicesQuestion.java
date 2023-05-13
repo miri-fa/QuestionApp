@@ -34,6 +34,9 @@ public class ChoicesQuestion extends Question implements Serializable {
     public ArrayList<String> getChoices() {
         return choices;
     }
+    public String getChoice(int i) {
+        return choices.get(i);
+    }
 
     public void setChoices(ArrayList<String> choices) {
         this.choices = choices;
