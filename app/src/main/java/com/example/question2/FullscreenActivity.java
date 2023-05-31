@@ -1,7 +1,23 @@
 package com.example.question2;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
+import androidx.work.Constraints;
+import androidx.work.NetworkType;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkInfo;
+import androidx.work.WorkManager;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.os.Bundle;
+
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -11,8 +27,15 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
-public class FullscreenActivity extends AppCompatActivity implements View.OnTouchListener {
+
+public class FullscreenActivity extends AppCompatActivity{
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +55,19 @@ public class FullscreenActivity extends AppCompatActivity implements View.OnTouc
 
         start.setOnClickListener(onClickListener1);
 
-    }
-    public boolean onTouch(View view, MotionEvent event){
-        if(event.getAction() == MotionEvent.ACTION_MOVE){
-            Intent intent =new Intent(FullscreenActivity.this, LoginActivity.class);
-            FullscreenActivity.this.finish();
-            startActivity(intent);
-        }
-        return true;
+        FirebaseMessaging.getInstance().subscribeToTopic("news")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(Task<Void> task) {
+                        String msg = "Done";
+                        if (!task.isSuccessful()) {
+                            msg = "Failed";
+                        }
+
+                    }
+                });
+
+
     }
 
 }

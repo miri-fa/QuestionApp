@@ -110,6 +110,10 @@ public class MakeQuestionnaireActivityStudent extends AppCompatActivity implemen
                         questionNumber = findViewById(R.id.numberMakeCount);
                         fillQuestion(questionnaire.getQuestionFromPosition(0),0);
                     }
+                } else {
+                    Intent intent = new Intent(getApplicationContext(), FillQuestionnaireActivity.class);
+                    intent = intent.putExtra("notfound",true);
+                    startActivity(intent);
                 }
 
                 answersList = new ArrayList<>();
@@ -128,7 +132,6 @@ public class MakeQuestionnaireActivityStudent extends AppCompatActivity implemen
 
 
         buttonFinish = (Button) findViewById(R.id.create_questionnaire);
-        buttonMainPage = (Button) findViewById(R.id.create_to_see_button);
         buttonCreateQuestion = (Button) findViewById(R.id.questionnaire_add_question);
         buttonDeleteQuestion = (Button) findViewById(R.id.questionnaire_delete_question);
         buttonNextQuestion = (Button) findViewById(R.id.questionnaire_advance_create);
@@ -237,7 +240,6 @@ public class MakeQuestionnaireActivityStudent extends AppCompatActivity implemen
             }
         };
 
-        buttonMainPage.setOnClickListener(onClickListener2);
 
         //Go forward on questionnaire
         View.OnClickListener onClickListener5 = new View.OnClickListener() {

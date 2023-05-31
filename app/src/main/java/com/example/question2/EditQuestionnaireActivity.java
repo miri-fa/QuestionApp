@@ -115,7 +115,6 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
 
 
         buttonFinish = (Button) findViewById(R.id.create_questionnaire);
-        buttonMainPage = (Button) findViewById(R.id.create_to_see_button);
         buttonCreateQuestion = (Button) findViewById(R.id.questionnaire_add_question);
         buttonDeleteQuestion = (Button) findViewById(R.id.questionnaire_delete_question);
         buttonNextQuestion = (Button) findViewById(R.id.questionnaire_advance_create);
@@ -147,7 +146,6 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
             }
         };
 
-        buttonMainPage.setOnClickListener(onClickListener2);
 
         View.OnClickListener onClickListener3 = new View.OnClickListener() {
             @Override

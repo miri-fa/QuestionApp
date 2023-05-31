@@ -208,6 +208,7 @@ public class MainActivityStudent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent =new Intent(MainActivityStudent.this, FillQuestionnaireActivity.class);
+                intent = intent.putExtra("notfound", false);
                 MainActivityStudent.this.finish();
                 startActivity(intent);
             }
@@ -227,6 +228,8 @@ public class MainActivityStudent extends AppCompatActivity {
 
         Button buttonProfile = (Button) findViewById(R.id.profilemainstudent);
         buttonProfile.setOnClickListener(onClickListener2);
+
+
 
     }
 }

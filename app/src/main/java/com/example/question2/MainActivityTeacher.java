@@ -106,7 +106,6 @@ public class MainActivityTeacher extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
-
                     for (DataSnapshot ds : snapshot.getChildren()) {
                         Questionnaire q = ds.getValue(Questionnaire.class);
                         arrayList.add(q.getTitle());
@@ -150,6 +149,19 @@ public class MainActivityTeacher extends AppCompatActivity {
 
         Button buttonProfile = (Button) findViewById(R.id.profilemainteacher);
         buttonProfile.setOnClickListener(onClickListener2);
+
+        View.OnClickListener onClickListener3 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(MainActivityTeacher.this, SettingsActivity.class);
+                MainActivityTeacher.this.finish();
+                startActivity(intent);
+            }
+        };
+
+        Button buttonSetting = (Button) findViewById(R.id.settingsmain);
+        buttonSetting.setOnClickListener(onClickListener3);
+
 
     }
 }

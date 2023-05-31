@@ -54,7 +54,7 @@
                 android:background="@drawable/buttongradient"
                 android:layout_marginLeft="250sp"
                 android:fontFamily="@font/lato_bold"
-                android:textSize="30sp"
+                style="@style/FixedResultsText"
                 android:text="+" />
 
             <ListView

@@ -95,6 +95,7 @@
             android:background="@drawable/buttongradient"
             android:fontFamily="@font/lato_bold"
             android:text="Registrarse"
+            style="@style/FixedButtonText"
             android:textColor="#FFF" />
         <TextView
             android:id="@+id/textRoleType"
@@ -140,7 +141,7 @@
         android:shadowRadius="6"
         android:text="Registrarse"
         android:textColor="#FFD9C0"
-        android:textSize="60sp"
+        style="@style/FixedTextTitle"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.550"
@@ -160,7 +161,7 @@
         android:shadowRadius="10"
         android:text="Registrarse"
         android:textColor="#FAF0D7"
-        android:textSize="60sp"
+        style="@style/FixedTextTitle"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

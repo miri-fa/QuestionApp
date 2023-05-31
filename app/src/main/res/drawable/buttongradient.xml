@@ -2,7 +2,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:shape="rectangle">
+    android:shape="rectangle"
+    >
     <!--  Gradient Bg for listrow -->
     <gradient
         android:startColor="#f4a0bf"

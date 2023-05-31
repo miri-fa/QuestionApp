@@ -44,7 +44,7 @@
         <entry key="app/src/main/res/layout/activity_questionnaire_choose.xml" value="0.20742753623188406" />
         <entry key="app/src/main/res/layout/activity_questionnaire_code.xml" value="0.2210144927536232" />
         <entry key="app/src/main/res/layout/activity_questionnaire_start_student.xml" value="0.23641304347826086" />
-        <entry key="app/src/main/res/layout/activity_questionnaire_start_teacher.xml" value="0.14200090048969655" />
+        <entry key="app/src/main/res/layout/activity_questionnaire_start_teacher.xml" value="0.29510498046875" />
         <entry key="app/src/main/res/layout/activity_questionnaire_student_amke.xml" value="0.23641304347826086" />
         <entry key="app/src/main/res/layout/activity_questionnaire_student_make.xml" value="0.19481932728003104" />
         <entry key="app/src/main/res/layout/activity_questionnaire_teacher_make.xml" value="0.24411594556725544" />
@@ -58,7 +58,7 @@
         <entry key="app/src/main/res/layout/elv_child.xml" value="0.22826086956521738" />
         <entry key="app/src/main/res/layout/elv_team.xml" value="0.22826086956521738" />
         <entry key="app/src/main/res/layout/elv_team_teacher.xml" value="0.2210144927536232" />
-        <entry key="app/src/main/res/layout/fragment_answers_choices.xml" value="0.19746376811594202" />
+        <entry key="app/src/main/res/layout/fragment_answers_choices.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_answers_open_choice.xml" value="0.19746376811594202" />
         <entry key="app/src/main/res/layout/fragment_answers_rating.xml" value="0.19746376811594202" />
         <entry key="app/src/main/res/layout/fragment_assign_code.xml" value="0.23641304347826086" />

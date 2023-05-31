@@ -12,4 +12,23 @@
     <color name="light_blue_A200">#FF40C4FF</color>
     <color name="light_blue_A400">#FF00B0FF</color>
     <color name="black_overlay">#66000000</color>
+
+    <!-- Colores para el modo claro -->
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryVariant">#3700B3</color>
+    <color name="colorOnPrimary">#f4a0bf</color>
+
+    <color name="colorSecondary">#03DAC6</color>
+    <color name="colorSecondaryVariant">#018786</color>
+    <color name="colorOnSecondary">#000000</color>
+
+    <!-- Colores para el modo oscuro -->
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimaryVariantDark">#6200EE</color>
+    <color name="colorOnPrimaryDark">#FFFFFF</color>
+
+    <color name="colorSecondaryDark">#03DAC6</color>
+    <color name="colorSecondaryVariantDark">#018786</color>
+    <color name="colorOnSecondaryDark">#000000</color>
+
 </resources>

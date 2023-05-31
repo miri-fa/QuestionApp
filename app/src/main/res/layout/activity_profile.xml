@@ -42,7 +42,7 @@
             android:shadowDy="5"
             android:shadowRadius="5"
             android:text="Perfil"
-            android:textSize="40sp" />
+            style="@style/FixedMainText" />
 
 
     </FrameLayout>
@@ -69,6 +69,7 @@
             android:layout_marginTop="80dp"
             android:background="@drawable/bottom_buttons_main"
             android:fontFamily="@font/lato_bold"
+            style="@style/FixedButtonText"
             android:text="consultar equipos"
             android:textColor="#FFF" />
 
@@ -87,7 +88,7 @@
                 android:fontFamily="@font/lato_bold"
                 android:text="*nombre de usuario*"
                 android:textColor="#FFF"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
         </FrameLayout>
 
         <FrameLayout
@@ -105,7 +106,7 @@
                 android:fontFamily="@font/lato_bold"
                 android:text="Tipo de perfil: *tipo*"
                 android:textColor="#FFF"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
         </FrameLayout>
 
         <androidx.appcompat.widget.AppCompatButton

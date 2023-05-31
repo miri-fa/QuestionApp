@@ -97,40 +97,41 @@ public class LoginActivity extends AppCompatActivity{
             passView.setError("Se necesita una contraseña");
             passView.requestFocus();
         }
+        else {
+            mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
 
-        mAuth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-
-                    DatabaseReference users = FirebaseDatabase.getInstance().getReference("users");
-                    Query query = users.orderByChild("email").equalTo(email);
-                    query.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists()){
-                                for (DataSnapshot childSnapshot: snapshot.getChildren()) {
-                                    User u = childSnapshot.getValue(User.class);
-                                    role = u.getRole();
-                                }
-                                if (role.equals("Profesor")){
-                                    startActivity(new Intent(LoginActivity.this, MainActivityTeacher.class));
-                                }else{
-                                    startActivity(new Intent(LoginActivity.this, MainActivityStudent.class));
+                        DatabaseReference users = FirebaseDatabase.getInstance().getReference("users");
+                        Query query = users.orderByChild("email").equalTo(email);
+                        query.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+                                    for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                                        User u = childSnapshot.getValue(User.class);
+                                        role = u.getRole();
+                                    }
+                                    if (role.equals("Profesor")) {
+                                        startActivity(new Intent(LoginActivity.this, MainActivityTeacher.class));
+                                    } else {
+                                        startActivity(new Intent(LoginActivity.this, MainActivityStudent.class));
+                                    }
                                 }
                             }
-                        }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                        }
-                    });
-                }else{
-                    Toast.makeText(LoginActivity.this, "Los datos introducidos no son correctos", Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Los datos introducidos no son correctos", Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
 }

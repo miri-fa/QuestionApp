@@ -42,7 +42,7 @@
             android:text="Equipos"
             android:shadowColor="#f4a0bf"
             android:textColor="#faf0d7"
-            android:textSize="40sp" />
+            style="@style/FixedResultsText" />
 
 
     </FrameLayout>
@@ -69,7 +69,7 @@
             android:layout_marginTop="20sp"
             android:layout_marginLeft="10sp"
             android:layout_gravity="left|top"
-            android:textSize="20dp"
+            android:textSize="20sp"
             />
         <EditText
             android:id="@+id/joinTeamTitle"
@@ -90,7 +90,7 @@
             android:layout_marginTop="90sp"
             android:layout_marginLeft="10sp"
             android:layout_gravity="left|top"
-            android:textSize="20dp"
+            android:textSize="20sp"
             />
         <EditText
             android:id="@+id/joinTeamPassword"
@@ -111,6 +111,7 @@
             android:text="unirse"
             android:fontFamily="@font/lato_bold"
             android:textColor="#fff"
+            style="@style/FixedButtonText"
             android:background="@drawable/bottom_buttons_main" />
         <TextView
             android:layout_width="wrap_content"
@@ -121,7 +122,7 @@
             android:layout_marginTop="240sp"
             android:layout_marginLeft="10sp"
             android:layout_gravity="left|top"
-            android:textSize="20dp"
+            android:textSize="20sp"
             />
 
         <ExpandableListView

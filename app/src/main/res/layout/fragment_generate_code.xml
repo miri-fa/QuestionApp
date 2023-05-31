@@ -68,7 +68,7 @@
                 android:background="@drawable/buttongradient"
                 android:layout_marginLeft="250sp"
                 android:fontFamily="@font/lato_bold"
-                android:textSize="30sp"
+                style="@style/FixedResultsText"
                 android:text="+" />
 
             <EditText
@@ -112,7 +112,7 @@
                 android:textAlignment="center"
                 android:text="Equipos que has creado:"
                 android:textColor="@color/black"
-                android:textSize="20sp" />
+                android:textSize="20dp" />
 
             <ListView
                 android:id="@+id/list_assign_teams"
@@ -146,6 +146,7 @@
         android:background="@drawable/buttongradient"
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/lato_bold"
+        style="@style/FixedButtonText"
         android:text="Terminar" />
 </FrameLayout>
 </ScrollView>

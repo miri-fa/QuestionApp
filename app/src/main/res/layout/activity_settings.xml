@@ -42,7 +42,7 @@
             android:shadowDy="5"
             android:shadowRadius="5"
             android:text="Ajustes"
-            android:textSize="40sp" />
+            style="@style/FixedResultsText" />
 
 
     </FrameLayout>
@@ -65,6 +65,7 @@
             android:layout_height="70dp"
             android:layout_gravity="top"
             android:background="@drawable/main_shape">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,71 +73,40 @@
                 android:fontFamily="@font/lato_bold"
                 android:textColor="#FFF"
                 android:layout_gravity="center"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 />
         </FrameLayout>
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="100sp"
+        <Spinner
+            android:id="@+id/fontSizeSpinner"
             android:layout_marginTop="80dp"
-            android:layout_height="100dp"
-            android:text="pequeño"
-            android:textSize="10sp"
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+            android:entries="@array/font_sizes"
+            android:background="@drawable/bottom_buttons_main"/>
+
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="80dp"
+            android:layout_gravity="right"
+            android:src="@drawable/dropdown_arrow"
+            android:layout_marginBottom="10sp"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/textSizeButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_gravity="left"
             android:layout_marginLeft="10sp"
-            android:fontFamily="@font/lato_bold"
-            android:textColor="#FFF"
-
-            android:background="@drawable/bottom_buttons_main" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="100sp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="120dp"
+            style="@style/FixedButtonText"
             android:layout_marginRight="10sp"
-            android:layout_height="100dp"
-            android:layout_gravity="right"
-            android:text="grande"
-            android:textSize="20sp"
+            android:background="@drawable/bottom_buttons_main"
             android:fontFamily="@font/lato_bold"
+            android:text="aplicar"
             android:textColor="#FFF"
+            android:textSize="15sp" />
 
-            android:background="@drawable/bottom_buttons_main" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="100sp"
-            android:layout_marginTop="80dp"
-            android:layout_height="100dp"
-            android:textSize="15sp"
-            android:layout_gravity="center_horizontal"
-            android:text="mediano"
-            android:fontFamily="@font/lato_bold"
-            android:textColor="#FFF"
-
-            android:background="@drawable/bottom_buttons_main" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="top"
-            android:layout_marginTop="330dp"
-            android:background="@drawable/main_shape">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Activar notificaciones"
-                android:fontFamily="@font/lato_bold"
-                android:layout_marginLeft="10sp"
-                android:textColor="#FFF"
-                android:layout_gravity="center_vertical"
-                android:textSize="20dp"
-                />
-
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="60dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_vertical|right"
-                android:width="70sp"
-                android:height="30sp"
-                android:switchMinWidth="60sp"/>
-        </FrameLayout>
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -146,41 +116,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Colores"
+                android:text="Notificaciones"
                 android:fontFamily="@font/lato_bold"
                 android:textColor="#FFF"
                 android:layout_gravity="center_horizontal"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 />
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="30sp"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="10sp"
-                android:background="@drawable/bottom_buttons_main"/>
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/dropdown_arrow"
-                android:layout_gravity="right|bottom"
-                android:layout_marginBottom="10sp"/>
+            <Switch
+                android:id="@+id/switchNotifications"
+                android:layout_width="263dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="50dp"
+                android:textSize="20sp"
+                android:fontFamily="@font/lato_bold"
+                android:text="Activar"
+                android:textColor="#FFF" />
 
         </FrameLayout>
-
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_gravity="bottom"
-            android:layout_height="80dp"
-            android:text="guardar cambios"
-            android:fontFamily="@font/lato_bold"
-            android:textColor="#FFF"
-
-            android:background="@drawable/bottom_buttons_main" />
-
 
 
     </FrameLayout>

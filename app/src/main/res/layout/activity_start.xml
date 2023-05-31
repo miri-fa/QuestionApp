@@ -20,6 +20,7 @@
         android:fontFamily="@font/lato_bold"
         android:text="Comenzar"
         android:textColor="#FFF"
+        style="@style/FixedButtonText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

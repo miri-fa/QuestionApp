@@ -84,6 +84,7 @@ public class SeeAnswersActivity extends AppCompatActivity implements
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+        answersList = new ArrayList<>();
 
         String role = getIntent().getStringExtra("role");
         String codeInput = getIntent().getStringExtra("title");
@@ -116,6 +117,8 @@ public class SeeAnswersActivity extends AppCompatActivity implements
 
                     HSSFRow rowExcel;
                     int row = 0;
+                    rowExcel = sheet.createRow(row);
+                    row++;
                     for (Question q: questionnaire.getQuestions()){
                         rowExcel = sheet.createRow(row);
                         row++;
@@ -158,7 +161,7 @@ public class SeeAnswersActivity extends AppCompatActivity implements
                         cell++;
                     }
                     //Get path of the downloads phone directory
-                    File filePath = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"/"+questionnaire.getTitle()+".xlsx");
+                    File filePath = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"/"+questionnaire.getTitle()+"prueba"+".xlsx");
                     System.out.println("PATH: "+filePath);
                     try {
                     if (!filePath.exists()){
@@ -223,8 +226,10 @@ public class SeeAnswersActivity extends AppCompatActivity implements
                         count = 1;
                         questionNumber = findViewById(R.id.numberMakeCount);
                         fillQuestion(questionnaire.getQuestionFromPosition(0),0);
-                        //TextView codeView = findViewById(R.id.code);
-                        //codeView.setText(code);
+                        if(!role.equals("1")) {
+                            TextView codeView = findViewById(R.id.code);
+                            codeView.setText(code);
+                        }
                     }
                 }
             }
@@ -239,72 +244,12 @@ public class SeeAnswersActivity extends AppCompatActivity implements
 
         //Setting the views
         buttonFinish = (Button) findViewById(R.id.create_questionnaire);
-        buttonMainPage = (Button) findViewById(R.id.create_to_see_button);
         buttonCreateQuestion = (Button) findViewById(R.id.questionnaire_add_question);
         buttonDeleteQuestion = (Button) findViewById(R.id.questionnaire_delete_question);
         buttonNextQuestion = (Button) findViewById(R.id.questionnaire_advance_create);
         buttonBeforeQuestion = (Button) findViewById(R.id.questionnaire_back_create);
 
-        //Finish making the questionnaire
-        /*View.OnClickListener onClickListener1 = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                createQuestionnaire();
-                for (int i=0; i<questionnaire.getQuestions().size(); i++) {
-                    //Add if this instance is this type of question or other to save
-                    if(questionnaire.getQuestions().get(i).getType() == 1){
-                        OpenAnswerQuestion op = (OpenAnswerQuestion) questionnaire.getQuestions().get(i);
-                        op.addAnswers(answersList.get(i));
-                        questionnaire.getQuestions().set(i,op);
-                        OpenAnswerQuestion quest = (OpenAnswerQuestion) questionnaire.getQuestions().get(i);
-                        FirebaseDatabase.getInstance().getReference("questionnaires/" + questionnaireID+
-                                "/questions/"+i+"/answers").setValue(quest.getAnswers())
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
 
-                                        }
-                                    }
-                                });
-                    } else if(questionnaire.getQuestions().get(i).getType() == 2){
-                        ChoicesQuestion op = (ChoicesQuestion) questionnaire.getQuestions().get(i);
-                        op.addAnswers(answersList.get(i));
-                        questionnaire.getQuestions().set(i,op);
-                        ChoicesQuestion quest = (ChoicesQuestion) questionnaire.getQuestions().get(i);
-                        FirebaseDatabase.getInstance().getReference("questionnaires/" + questionnaireID+
-                                "/questions/"+i+"/answers").setValue(quest.getAnswers())
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-
-                                        }
-                                    }
-                                });
-                    } else if(questionnaire.getQuestions().get(i).getType() == 3){
-                        ScoreQuestion op = (ScoreQuestion) questionnaire.getQuestions().get(i);
-                        op.addAnswers(answersList.get(i));
-                        questionnaire.getQuestions().set(i,op);
-                        ScoreQuestion quest = (ScoreQuestion) questionnaire.getQuestions().get(i);
-                        FirebaseDatabase.getInstance().getReference("questionnaires/" + questionnaireID+
-                                "/questions/"+i+"/answers").setValue(quest.getAnswers())
-                                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-
-                                        }
-                                    }
-                                });
-                    }
-                }
-                Toast.makeText(getApplicationContext(), "The questionnaire is saved", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MakeQuestionnaireActivityStudent.this, MainActivityTeacher.class));
-            }
-        }
-        buttonFinish.setOnClickListener(onClickListener1);
-        */
         //Go to main page
         View.OnClickListener onClickListener2 = new View.OnClickListener() {
             @Override
@@ -313,8 +258,6 @@ public class SeeAnswersActivity extends AppCompatActivity implements
 
             }
         };
-
-        buttonMainPage.setOnClickListener(onClickListener2);
 
         //Go forward on questionnaire
         View.OnClickListener onClickListener5 = new View.OnClickListener() {
@@ -332,6 +275,25 @@ public class SeeAnswersActivity extends AppCompatActivity implements
         };
 
         buttonNextQuestion.setOnClickListener(onClickListener5);
+
+        //Go back on questionnaire
+        View.OnClickListener onClickListener7 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!role.equals("1")) {
+                    Intent intent = new Intent(SeeAnswersActivity.this, MainActivityTeacher.class);
+                    SeeAnswersActivity.this.finish();
+                    startActivity(intent);
+                } else{
+                    Intent intent = new Intent(SeeAnswersActivity.this, MainActivityStudent.class);
+                    SeeAnswersActivity.this.finish();
+                    startActivity(intent);
+                }
+
+            }
+        };
+
+        buttonFinish.setOnClickListener(onClickListener7);
 
         //Go back on questionnaire
         View.OnClickListener onClickListener6 = new View.OnClickListener() {

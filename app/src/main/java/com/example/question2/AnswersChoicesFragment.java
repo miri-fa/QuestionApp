@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class AnswersChoicesFragment extends Fragment {
     private TextView textTitle;
     private int position;
-    private ArrayList<String> answers, questions;
+    private ArrayList<String> answers, questions, finalList;
     private ArrayList<Integer> points;
     private String title;
 
@@ -43,19 +43,19 @@ public class AnswersChoicesFragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_answers_choices, container, false);
         textTitle = view.findViewById(R.id.answer_choices_title);
         ListView listQuestions = view.findViewById(R.id.answers_choices_list);
-        ListView listPercentages = view.findViewById(R.id.answers_percentage_list);
 
         questions = new ArrayList<>();
         answers = new ArrayList<>();
         points = new ArrayList<>();
+        finalList = new ArrayList<>();
 
         ArrayAdapter<String> adapterQuestions = new ArrayAdapter<String>
-                (getActivity().getBaseContext(), android.R.layout.simple_list_item_1, android.R.id.text1, questions);
+                (getActivity().getBaseContext(), android.R.layout.simple_list_item_1, android.R.id.text1, finalList);
         listQuestions.setAdapter(adapterQuestions);
 
-        ArrayAdapter<Integer> adapterAnswers = new ArrayAdapter<Integer>
+        /*ArrayAdapter<Integer> adapterAnswers = new ArrayAdapter<Integer>
                 (getActivity().getBaseContext(), android.R.layout.simple_list_item_1, android.R.id.text1, points);
-        listPercentages.setAdapter(adapterAnswers);
+        listPercentages.setAdapter(adapterAnswers);*/
 
         //navigation filling
 
@@ -68,7 +68,6 @@ public class AnswersChoicesFragment extends Fragment {
                 for (String s: list){
                     answers.add(s);
                 }
-                listQuestions.setAdapter(adapterQuestions);
             }
 
             if (getArguments().getStringArrayList("questions") != null){
@@ -85,8 +84,9 @@ public class AnswersChoicesFragment extends Fragment {
                     int aux = points.get(j);
                     points.set(j,aux+1);
                 }
+                finalList.add(questions.get(i)+"       "+points.get(i).toString());
             }
-            listPercentages.setAdapter(adapterAnswers);
+            listQuestions.setAdapter(adapterQuestions);
             /*int total = 0;
             for (int i=0; i<points.size(); i++){
                 total += points.get(i);

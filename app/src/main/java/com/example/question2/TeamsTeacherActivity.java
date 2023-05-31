@@ -94,6 +94,7 @@ public class TeamsTeacherActivity extends AppCompatActivity {
         createTeamButton = findViewById(R.id.createTeamButton);
         createTeamButton.setOnClickListener(onClickListener1);
 
+
         View.OnClickListener onClickListener3 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

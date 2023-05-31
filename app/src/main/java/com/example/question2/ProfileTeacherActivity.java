@@ -71,9 +71,10 @@ public class ProfileTeacherActivity extends AppCompatActivity {
         View.OnClickListener onClickListener3 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(ProfileTeacherActivity.this, MainActivityStudent.class);
+                Intent intent =new Intent(ProfileTeacherActivity.this, MainActivityTeacher.class);
                 ProfileTeacherActivity.this.finish();
                 startActivity(intent);
+
             }
         };
 

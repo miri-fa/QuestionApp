@@ -1,11 +1,38 @@
 <resources>
 
+
+
+
     <style name="Widget.Theme.Question2.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
+    </style>
+
+
+    <style name="FixedTextTitle" parent="@android:style/TextAppearance">
+        <item name="android:textSize">60dp</item>
+    </style>
+    <style name="FixedMainText" parent="@android:style/TextAppearance">
+        <item name="android:textSize">40dp</item>
+    </style>
+
+    <style name="FixedQuestionnaireText" parent="@android:style/TextAppearance">
+        <item name="android:textSize">25dp</item>
+    </style>
+
+    <style name="FixedResultsText" parent="@android:style/TextAppearance">
+        <item name="android:textSize">35dp</item>
+    </style>
+
+    <style name="FixedButtonText" parent="@android:style/TextAppearance">
+        <item name="android:textSize">14dp</item>
     </style>
 
     <style name="Widget.Theme.Question2.ButtonBar.Fullscreen" parent="">
         <item name="android:background">@color/black_overlay</item>
         <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <style name="ButtonBackground" parent="Widget.Question2.AppCompatButton">
+        <item name="android:textColor">#00FF00</item>
     </style>
 </resources>

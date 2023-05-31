@@ -34,6 +34,10 @@ public class FillQuestionnaireActivity extends AppCompatActivity{
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_questionnaire_start_student);
+        Boolean notFound = getIntent().getBooleanExtra("notfound",false);
+        if (notFound){
+            Toast.makeText(FillQuestionnaireActivity.this, "El código no corresponde a ningún cuestionario", Toast.LENGTH_LONG).show();
+        }
 
         code = findViewById(R.id.questionnaire_code_input);
 
@@ -92,8 +96,10 @@ public class FillQuestionnaireActivity extends AppCompatActivity{
             }
         };
 
-        Button buttonGoBackMain = (Button) findViewById(R.id.goMainFromQuestionnaireStudent);
-        buttonGoBackMain.setOnClickListener(onClickListener2);
+        Button buttonBack = (Button) findViewById(R.id.backmain);
+        buttonBack.setOnClickListener(onClickListener2);
+
+
 
 
     }

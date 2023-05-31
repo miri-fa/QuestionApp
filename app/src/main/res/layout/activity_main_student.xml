@@ -62,7 +62,8 @@
             android:shadowRadius="5"
             android:text="Quest?on"
             android:textColor="#faf0d7"
-            android:textSize="40sp" />
+            style="@style/FixedMainText"
+             />
 
 
     </FrameLayout>
@@ -113,6 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="hacer encuesta"
+                style="@style/FixedButtonText"
                 android:fontFamily="@font/lato_bold"
                 android:textColor="#FFFFFF"
                 android:layout_gravity="center"
