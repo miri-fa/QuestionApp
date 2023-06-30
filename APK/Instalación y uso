@@ -1,5 +1,5 @@
 No es necesario descargar todos los archivos para realizar la instalación. Los pasos para conseguir para su correcta instalación son los siguientes:
-•	Descargar el archivo Question.sdk, que es la aplicación. 
+•	Descargar el archivo Question.apk, que es la aplicación. 
 •	El archivo se puede transferir al teléfono Android de diversas formas, como descargándolo directamente desde el móvil, enviarlo por correo o conectando el dispositivo al ordenador para su transferencia.
 •	Una vez en el dispositivo, localizarlo y pulsarlo para que se instale. Lo más común será que aparecerá un mensaje avisando que el proceso está bloqueado porque no se dispone de los permisos pertinentes.
 •	Estos permisos son para permitir la instalación de aplicaciones externas. El dispositivo al dar el aviso guiará al usuario a la pantalla de dichos permisos.
