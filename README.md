@@ -23,4 +23,4 @@ BlueStacks y otros emuladores del mismo tipo pueden dar problemas a usuarios de 
 •	Una vez instalado el emulador, pulsar siguiente y darle un nombre identificable al dispositivo. La orientación deberá ser vertical para ver la aplicación correctamente.
 •	Una vez acabado, ejecutar el emulador. 
 
-•	Cuando esté encendido, simplemente arrastrar el archivo “Question.apk” a la pantalla del emulador y la aplicación se instalará automáticamente.
+•	Cuando esté encendido, simplemente arrastrar el archivo “Quest?on.apk” a la pantalla del emulador y la aplicación se instalará automáticamente.
