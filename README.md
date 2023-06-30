@@ -3,7 +3,7 @@ La aplicación se encuentra en este GitHub junto con el código y los recursos. 
 
 •	Abrir la carpeta APK.
 
-•	Una vez dentro, descargar el archivo Quest?on.sdk, que es la aplicación. 
+•	Una vez dentro, descargar el archivo Quest?on.apk, que es la aplicación. 
 
 •	El archivo se puede transferir al teléfono Android de diversas formas, como descargándolo directamente desde el móvil, enviarlo por correo o conectando el dispositivo al ordenador para su transferencia.
 
