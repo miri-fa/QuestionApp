@@ -64,6 +64,8 @@ public class CompleteMultipleChoiceFragment extends Fragment {
         adapter = new ArrayAdapter<String>(getActivity().getBaseContext(), android.R.layout.simple_list_item_multiple_choice, android.R.id.text1, arrayList);
         listView.setAdapter(adapter);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+        //get the arguments from the activity
         if (getArguments().getString("title")!=null) {
             title = getArguments().getString("title");
             textTitle.setText(title);
@@ -73,6 +75,8 @@ public class CompleteMultipleChoiceFragment extends Fragment {
                 arrayList.add(s);
             }
             listView.setAdapter(adapter);
+
+            //check items
             if ((getArguments().getString("answer")!=null)&&(getArguments().getString("answer")!="")){
                 String answer = getArguments().getString("answer");
                 String[] parts = answer.split(" ");
@@ -86,6 +90,7 @@ public class CompleteMultipleChoiceFragment extends Fragment {
             }
         }
 
+        //if an item is checked, add to list
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {

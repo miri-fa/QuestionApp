@@ -45,8 +45,7 @@ public class CompleteOpenQuestionFragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_complete_open_question, container, false);
         textTitle = view.findViewById(R.id.title_open_question_complete);
 
-        //navigation filling
-
+        //if there's arguments passed from another activity
         if (getArguments().getString("title")!=null) {
             title = getArguments().getString("title");
             position = getArguments().getInt("position");

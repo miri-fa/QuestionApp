@@ -72,7 +72,7 @@ public class OneChoiceFragment extends Fragment {
         }
         adapter = new ArrayAdapter<String>(getActivity().getBaseContext(), android.R.layout.simple_list_item_1, android.R.id.text1,arrayList);
         listView.setAdapter(adapter);
-
+        //delete an option
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
@@ -83,6 +83,7 @@ public class OneChoiceFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         arrayList.remove(pos);
+                        q.deleteChoice(pos);
                         adapter.notifyDataSetChanged();
                     }
                 });
@@ -96,7 +97,7 @@ public class OneChoiceFragment extends Fragment {
                 alertDialog.show();
             }
         });
-
+        //add choice
         Button btn = view.findViewById(R.id.add_option_open);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override

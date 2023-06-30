@@ -3,7 +3,7 @@ package com.example.question2.Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+//Class for the questions with choices
 public class ChoicesQuestion extends Question implements Serializable {
     private boolean multipleChoice;
     private ArrayList<String> choices;
@@ -17,6 +17,10 @@ public class ChoicesQuestion extends Question implements Serializable {
 
     public void addChoice(String choice){
         choices.add(choice);
+    }
+
+    public void deleteChoice(int pos){
+        choices.remove(pos);
     }
 
     public void addAnswers(String answers){

@@ -229,6 +229,29 @@ public class MainActivityStudent extends AppCompatActivity {
         Button buttonProfile = (Button) findViewById(R.id.profilemainstudent);
         buttonProfile.setOnClickListener(onClickListener2);
 
+        View.OnClickListener onClickListener3 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(MainActivityStudent.this, SettingsActivityStudent.class);
+                MainActivityStudent.this.finish();
+                startActivity(intent);
+            }
+        };
+
+        Button buttonSetting = (Button) findViewById(R.id.settingsmainstudent);
+        buttonSetting.setOnClickListener(onClickListener3);
+
+        View.OnClickListener onClickListener4 = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(MainActivityStudent.this, FillQuestionnaireActivity.class);
+                MainActivityStudent.this.finish();
+                startActivity(intent);
+            }
+        };
+
+        Button buttonFill = (Button) findViewById(R.id.fill_questionnaire_button);
+        buttonFill.setOnClickListener(onClickListener4);
 
 
     }

@@ -90,7 +90,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
     }
     public void registerUser(){
-
+        //get the info and see if is correct
         String email = textEmail.getText().toString().trim();
         String password = textPassword.getText().toString().trim();
         String confirmPassword = textConfirmPassword.getText().toString().trim();
@@ -109,11 +109,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
             textPassword.requestFocus();
         }
 
-       if(password!=confirmPassword){
-            textConfirmPassword.setError("La contraseña no coincide");
-            textConfirmPassword.requestFocus();
-        }
-
+        //create user and add it to database
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override

@@ -9,7 +9,7 @@ public class HelpManager extends AppCompatActivity {
     public HelpManager(){
         content = "";
     }
-
+//Help messages
     public String getContent(int number){
         switch (number){
             case 1: content = "Esta es la pantalla principal, aquí se muestran los cuestionarios que han completado sobre ti para que puedas ver las respuestas de tus compañeros.";
@@ -22,7 +22,7 @@ public class HelpManager extends AppCompatActivity {
                     break;
             case 5: content = "Aquí puedes crear una encuesta nueva. Primero introduce un título y luego crea las preguntas a tu gusto";
                     break;
-            case 6: content = "Aquí puedes navegar entre las preguntas de la encuesta y comprobar los resultados dados";
+            case 6: content = "Aquí puedes navegar entre las preguntas de la encuesta y comprobar los resultados dados. Si eres profesor, puedes editar o exportar las respuestas";
                     break;
             case 7: content = "Edita las preguntas a tu gusto y navega entre ellas para ultimar los detalles";
                     break;

@@ -107,8 +107,8 @@ public class MainActivityTeacher extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
                     for (DataSnapshot ds : snapshot.getChildren()) {
-                        Questionnaire q = ds.getValue(Questionnaire.class);
-                        arrayList.add(q.getTitle());
+                        String name = ds.child("title").getValue(String.class);
+                        arrayList.add(name);
                     }
 
                     listView.setAdapter(adapter);

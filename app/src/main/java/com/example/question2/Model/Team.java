@@ -1,7 +1,7 @@
 package com.example.question2.Model;
 
 import java.util.ArrayList;
-
+//Teams class
 public class Team {
     private String name;
     private String creator;

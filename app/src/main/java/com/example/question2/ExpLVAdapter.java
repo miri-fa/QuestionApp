@@ -99,7 +99,7 @@ public class ExpLVAdapter extends BaseExpandableListAdapter {
     public boolean hasStableIds() {
         return false;
     }
-
+//Get the list for the teams
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
         String titleTeam = (String)getGroup(groupPosition);
@@ -110,12 +110,14 @@ public class ExpLVAdapter extends BaseExpandableListAdapter {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //If exit team is clicked
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setMessage("¿Quieres salir de este grupo?");
                 builder.setCancelable(true);
                 builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //delete from team
                         String teamInfo = listTeams.get(groupPosition);
                         teamInfo = teamInfo.replace("Equipo: ","");
                         String[] splitString = teamInfo.split(System.lineSeparator());
@@ -187,7 +189,7 @@ public class ExpLVAdapter extends BaseExpandableListAdapter {
 
         return convertView;
     }
-
+//Shows the child view
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
         String item = (String)getChild(groupPosition,childPosition);

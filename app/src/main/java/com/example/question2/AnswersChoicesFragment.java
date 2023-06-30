@@ -53,11 +53,7 @@ public class AnswersChoicesFragment extends Fragment {
                 (getActivity().getBaseContext(), android.R.layout.simple_list_item_1, android.R.id.text1, finalList);
         listQuestions.setAdapter(adapterQuestions);
 
-        /*ArrayAdapter<Integer> adapterAnswers = new ArrayAdapter<Integer>
-                (getActivity().getBaseContext(), android.R.layout.simple_list_item_1, android.R.id.text1, points);
-        listPercentages.setAdapter(adapterAnswers);*/
-
-        //navigation filling
+        //get question
 
         if (getArguments().getString("title")!=null) {
             title = getArguments().getString("title");
@@ -69,7 +65,7 @@ public class AnswersChoicesFragment extends Fragment {
                     answers.add(s);
                 }
             }
-
+            // get all answers and fill the choices
             if (getArguments().getStringArrayList("questions") != null){
                 ArrayList<String> list = getArguments().getStringArrayList("questions");
                 for (String s: list){
@@ -77,24 +73,19 @@ public class AnswersChoicesFragment extends Fragment {
                     points.add(0);
                 }
             }
-
+            //create view for the answers
             for (int i=0; i<answers.size(); i++){
                 String[] chosen = answers.get(i).split(" ");
-                for (int j=0; j<chosen.length; j++){
-                    int aux = points.get(j);
-                    points.set(j,aux+1);
+                for (int j=0; j<chosen.length; j++) {
+                    points.set(Integer.parseInt(chosen[j]), points.get(Integer.parseInt(chosen[j])) + 1);
                 }
-                finalList.add(questions.get(i)+"       "+points.get(i).toString());
-            }
-            listQuestions.setAdapter(adapterQuestions);
-            /*int total = 0;
-            for (int i=0; i<points.size(); i++){
-                total += points.get(i);
             }
 
-            for (int i=0; i<points.size(); i++){
-                int aux = 0;
-            }*/
+            for (int i=0; i<questions.size(); i++){
+                finalList.add(questions.get(i)+"       "+points.get(i).toString());
+            }
+
+            listQuestions.setAdapter(adapterQuestions);
 
         }
 

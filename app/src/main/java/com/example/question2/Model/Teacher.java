@@ -1,7 +1,7 @@
 package com.example.question2.Model;
 
 import java.util.ArrayList;
-
+//Teacher user
 public class Teacher extends User {
     private ArrayList <Questionnaire> questionnairesDone;
     private ArrayList <Team> teamsDone;

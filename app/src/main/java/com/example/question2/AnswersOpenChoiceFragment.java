@@ -47,7 +47,7 @@ public class AnswersOpenChoiceFragment extends Fragment {
                 (getActivity().getBaseContext(), android.R.layout.simple_list_item_1, android.R.id.text1, answers);
         listView.setAdapter(adapter);
 
-        //navigation filling
+        //create view for answers
 
         if (getArguments().getString("title")!=null) {
             title = getArguments().getString("title");

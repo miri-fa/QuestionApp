@@ -3,7 +3,7 @@ package com.example.question2.Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+//Class of a question with an open answer
 public class OpenAnswerQuestion extends Question implements Serializable {
     private ArrayList<String> answers;
 

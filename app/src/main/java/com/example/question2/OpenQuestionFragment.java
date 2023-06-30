@@ -34,7 +34,7 @@ public class OpenQuestionFragment extends Fragment {
     public interface FragmentOpenQuestionListener{
         void onInputOpenQuestionSent(OpenAnswerQuestion openAnswerQuestion);
     }
-
+//Fill title if needed, if not record title
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

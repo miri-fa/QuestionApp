@@ -108,7 +108,7 @@ public class TeamsTeacherActivity extends AppCompatActivity {
         buttonBack.setOnClickListener(onClickListener3);
 
     }
-
+//load everything about the teams into the list
     private void loadData(){
         Context context = this;
         DatabaseReference questionnaires = FirebaseDatabase.getInstance().getReference("teams");

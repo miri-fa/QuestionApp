@@ -97,7 +97,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         Boolean switchState = switchNotifications.isChecked();
         sharedPref = getApplicationContext().getSharedPreferences("application", 0);
-        //String notifications = sharedPref.getString("NOTIFICATIONS",null);
 
         boolean notificationsEnabled = sharedPref.getBoolean("NOTIFICATIONS_ENABLED", false);
         switchNotifications.setChecked(notificationsEnabled);
@@ -105,7 +104,7 @@ public class SettingsActivity extends AppCompatActivity {
         switchNotifications.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // Guardar el estado del interruptor en SharedPreferences
+                // Save the state of the button
                 SharedPreferences.Editor editor = sharedPref.edit();
                 editor.putBoolean("NOTIFICATIONS_ENABLED", isChecked);
                 editor.apply();

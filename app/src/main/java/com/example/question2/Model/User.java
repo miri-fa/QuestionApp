@@ -1,7 +1,7 @@
 package com.example.question2.Model;
 
 import java.util.ArrayList;
-
+//Father class to student and teacher
 public class User {
     private String email,password, role;
 

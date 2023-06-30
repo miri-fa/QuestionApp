@@ -26,6 +26,7 @@ import com.example.question2.Model.OpenAnswerQuestion;
 import com.example.question2.Model.Question;
 import com.example.question2.Model.Questionnaire;
 import com.example.question2.Model.ScoreQuestion;
+import com.example.question2.Model.Student;
 import com.example.question2.Model.Team;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -65,6 +66,7 @@ public class GenerateCodeFragment extends Fragment{
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Get the questionnaire just created and add to it the chosen students and teams
                 DatabaseReference questionnaires = FirebaseDatabase.getInstance().getReference("questionnaires");
                 Query queryQuestionnaire = questionnaires.orderByChild("code").equalTo(code);
                 queryQuestionnaire.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -133,7 +135,10 @@ public class GenerateCodeFragment extends Fragment{
                 if (snapshot.exists()){
 
                     for (DataSnapshot ds : snapshot.getChildren()) {
-                        Team t = ds.getValue(Team.class);
+                        Team t = new Team();
+
+                        String name = ds.child("name").getValue(String.class);
+                        t.setName(name);
                         arrayTeams.add(t.getName());
                     }
 

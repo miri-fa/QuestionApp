@@ -34,7 +34,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class FullscreenActivity extends AppCompatActivity{
 
-
+//Start activity, show button, press to start
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

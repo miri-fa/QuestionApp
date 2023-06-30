@@ -1,7 +1,7 @@
 package com.example.question2.Model;
 
 import java.io.Serializable;
-
+//Father question class
 public class  Question implements Serializable {
     private String title;
     private Questionnaire questionnaire;

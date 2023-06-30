@@ -6,11 +6,13 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
@@ -19,6 +21,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentContainer;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -47,8 +51,6 @@ public class MakeQuestionnaireActivityTeacher extends AppCompatActivity implemen
 OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMultipleChoiceListener{
     private static FragmentManager fragmentManager;
     private ArrayList<Question> questions;
-    private String openQuestTitle;
-    private User userProfile;
     private FirebaseUser user;
     private DatabaseReference reference;
     private String userID;
@@ -61,7 +63,7 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
     private boolean repeated;
     private FragmentTransaction fragmentTransaction;
     private TextView questionNumber;
-    private Button buttonFinish, buttonMainPage, buttonCreateQuestion, buttonDeleteQuestion,
+    private Button buttonFinish, buttonCreateQuestion, buttonDeleteQuestion,
             buttonNextQuestion, buttonBeforeQuestion;
     private int count;
 
@@ -92,20 +94,15 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
             @Override
             public void onClick(View v) {
                 createQuestionnaire();
-                FirebaseDatabase.getInstance().getReference("questionnaires").push()
+                if (questionnaire.getQuestions().size()!=0){FirebaseDatabase.getInstance().getReference("questionnaires").push()
                         .setValue(questionnaire).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()) {
+                            setContentView(R.layout.activity_finish_making_questionnaire);
                             GenerateCodeFragment generateCodeFragment = new GenerateCodeFragment();
                             Bundle args = new Bundle();
 
-                            questionNumber.setVisibility(View.GONE);
-                            buttonCreateQuestion.setVisibility(View.GONE);
-                            buttonBeforeQuestion.setVisibility(View.GONE);
-                            buttonDeleteQuestion.setVisibility(View.GONE);
-                            buttonNextQuestion.setVisibility(View.GONE);
-                            buttonFinish.setVisibility(View.GONE);
 
                             args.putString("code", code);
                             generateCodeFragment.setArguments(args);
@@ -115,6 +112,9 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
                         }
                     }
                 });
+            } else {
+                    Toast.makeText(MakeQuestionnaireActivityTeacher.this, "Crea alguna pregunta antes", Toast.LENGTH_LONG).show();
+                }
             }
         };
         buttonFinish.setOnClickListener(onClickListener1);
@@ -236,7 +236,7 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
 
     }
 
-
+//add all questions to questionnaire and add to database
     private Questionnaire createQuestionnaire(){
         repeated = true;
         while (repeated){
@@ -266,7 +266,7 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
     }
 
     //This method adds question into the questionnaire class, for later save into the database
-     private void addQuestion(Boolean inserted){
+     private void addQuestion(Boolean insertced){
         Question q = new Question();
         q=null;
         if (openAnswerQuestion!=null){
@@ -291,7 +291,7 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
             }
         }
     }
-
+    //Fill the question with what was written before
     private void fillQuestion(Question question){
         if (question instanceof ChoicesQuestion){
             ChoicesQuestion q = (ChoicesQuestion) question;
@@ -320,7 +320,7 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
     public void onInputMultipleChoiceSent(ChoicesQuestion choicesQuestion) {
         this.choicesQuestion = choicesQuestion;
     }
-
+//Generate code
     private String generateCode(){
         String SALTCHARS = "abcdefghijklmnopqrstuvwxyz1234567890";
         StringBuilder salt = new StringBuilder();
@@ -332,7 +332,7 @@ OneChoiceFragment.FragmentOneChoiceListener, MultipleChoiceFragment.FragmentMult
         String saltStr = salt.toString();
         return saltStr;
     }
-
+//Check if it exists
     private boolean checkCode(String code){
         repeated = false;
         DatabaseReference questionnaires = FirebaseDatabase.getInstance().getReference("questionnaires");

@@ -1,15 +1,23 @@
 package com.example.question2;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +49,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -76,7 +85,7 @@ public class SeeAnswersActivity extends AppCompatActivity implements
     private FirebaseUser user;
     private TextView questionNumber;
     private Button buttonFinish, buttonMainPage, buttonCreateQuestion, buttonDeleteQuestion,
-            buttonNextQuestion, buttonBeforeQuestion;
+            buttonNextQuestion, buttonBeforeQuestion,buttonDeleteQuestionnaire;
     private int count;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +100,10 @@ public class SeeAnswersActivity extends AppCompatActivity implements
 
         if(role.equals("1")){
             setContentView(R.layout.activity_questionnaire_student_make);
+            TextView title = findViewById(R.id.title1);
+            title.setText("Ver Resultados");
+            Button backMain = (Button) findViewById(R.id.backmain);
+            backMain.setVisibility(View.GONE);
         }else{
             setContentView(R.layout.activity_see_results);
             View.OnClickListener onClickListener1 = new View.OnClickListener() {
@@ -118,11 +131,7 @@ public class SeeAnswersActivity extends AppCompatActivity implements
                     HSSFRow rowExcel;
                     int row = 0;
                     rowExcel = sheet.createRow(row);
-                    row++;
-                    for (Question q: questionnaire.getQuestions()){
-                        rowExcel = sheet.createRow(row);
-                        row++;
-                    }
+                    int index = 0;
                     for (Question q: questionnaire.getQuestions()) {
                         row = 0;
                         sheet.getRow(row).createCell(cell).setCellValue(q.getTitle());
@@ -131,8 +140,12 @@ public class SeeAnswersActivity extends AppCompatActivity implements
                             OpenAnswerQuestion questionAnswers = (OpenAnswerQuestion) q;
                             for(String answer : questionAnswers.getAnswers()){
                                 row++;
+                                if (index==0){
+                                    sheet.createRow(row);
+                                }
                                 sheet.getRow(row).createCell(cell).setCellValue(answer);
                             }
+
                         }else if (q.getType()==2){
                             ChoicesQuestion questionAnswers = (ChoicesQuestion) q;
                             //Aquí hay que convertir los números a las respuestas como string
@@ -149,19 +162,28 @@ public class SeeAnswersActivity extends AppCompatActivity implements
                                         phrase += questionAnswers.getChoice(Integer.parseInt(parts[i]));
                                     }
                                 }
+                                if (index==0){
+                                    sheet.createRow(row);
+                                }
                                 sheet.getRow(row).createCell(cell).setCellValue(phrase);
                             }
+
                         }else{
                             ScoreQuestion questionAnswers = (ScoreQuestion) q;
                             for(String answer : questionAnswers.getAnswers()){
                                 row++;
+                                if (index==0){
+                                    sheet.createRow(row);
+                                }
                                 sheet.getRow(row).createCell(cell).setCellValue(answer);
                             }
+
                         }
                         cell++;
+                        index++;
                     }
                     //Get path of the downloads phone directory
-                    File filePath = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"/"+questionnaire.getTitle()+"prueba"+".xlsx");
+                    File filePath = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+"/"+questionnaire.getTitle()+".xlsx");
                     System.out.println("PATH: "+filePath);
                     try {
                     if (!filePath.exists()){
@@ -248,7 +270,86 @@ public class SeeAnswersActivity extends AppCompatActivity implements
         buttonDeleteQuestion = (Button) findViewById(R.id.questionnaire_delete_question);
         buttonNextQuestion = (Button) findViewById(R.id.questionnaire_advance_create);
         buttonBeforeQuestion = (Button) findViewById(R.id.questionnaire_back_create);
+        if (!role.equals("1")){
+            buttonDeleteQuestionnaire = (Button) findViewById(R.id.delete_questionnaire);
+            Context context = this;
+            View.OnClickListener onClickListener9 = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setMessage("¿Quieres eliminar este cuestionario?");
+                    builder.setCancelable(true);
+                    builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            DatabaseReference teams = FirebaseDatabase.getInstance().getReference("questionnaires");
+                            Query query = teams.orderByChild("title").equalTo(codeInput);
+                            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    for (DataSnapshot ds:snapshot.getChildren()) {
+                                        FirebaseDatabase.getInstance().getReference("questionnaires/"+ds.getKey()).removeValue();
+                                    }
+                                }
 
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+                            startActivity(new Intent(SeeAnswersActivity.this, MainActivityTeacher.class));
+                        }
+
+                    });
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                }
+            };
+
+            buttonDeleteQuestionnaire.setOnClickListener(onClickListener9);
+
+        }
+
+        //Get help
+        View.OnClickListener onClickListenerHelp = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // inflate the layout of the popup window
+                LayoutInflater inflater = (LayoutInflater)
+                        getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popupView = inflater.inflate(R.layout.fragment_help, null);
+
+                // create the popup window
+                int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                boolean focusable = true; // lets taps outside the popup also dismiss it
+                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+                // show the popup window
+                // which view you pass in doesn't matter, it is only used for the window tolken
+                popupWindow.showAtLocation(findViewById(R.id.frameLayout2), Gravity.CENTER, 0, 0);
+                TextView message = popupWindow.getContentView().findViewById(R.id.helpText);
+                HelpManager help = new HelpManager();
+                message.setText(help.getContent(6));
+
+                // dismiss the popup window when touched
+                popupView.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+                        popupWindow.dismiss();
+                        return true;
+                    }
+                });
+            }
+        };
+        Button buttonHelp = (Button) findViewById(R.id.helpmain);
+        buttonHelp.setOnClickListener(onClickListenerHelp);
 
         //Go to main page
         View.OnClickListener onClickListener2 = new View.OnClickListener() {

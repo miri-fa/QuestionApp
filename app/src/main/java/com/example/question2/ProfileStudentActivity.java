@@ -42,7 +42,7 @@ public class ProfileStudentActivity extends AppCompatActivity {
         name.setText(user.getEmail());
         TextView type = findViewById(R.id.profileType);
         type.setText("Estudiante");
-
+        //go to teams activity
         View.OnClickListener onClickListener1 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -54,8 +54,7 @@ public class AnswersRatingFragment extends Fragment {
 
         answers = new ArrayList<>();
 
-        //navigation filling
-
+        //get question parameters
         if (getArguments().getString("title")!=null) {
             title = getArguments().getString("title");
             position = getArguments().getInt("position");
@@ -64,12 +63,15 @@ public class AnswersRatingFragment extends Fragment {
             lowerExtreme.setText(getLower);
             higherExtreme.setText(getHigher);
             textTitle.setText(title);
+            //add all answers to a list
             if (getArguments().getStringArrayList("answers") != null){
                 ArrayList<String> list = getArguments().getStringArrayList("answers");
                 for (String s: list){
                     answers.add(s);
                 }
                 finalPoints = 0;
+
+                //Create percentage of votes
                 for (int i=0; i<answers.size(); i++){
                     float auxPoints = 0;
                     auxPoints = Float.parseFloat(answers.get(i));

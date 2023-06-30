@@ -87,6 +87,7 @@ public class CompleteOneChoiceFragment extends Fragment {
             }
         }
 
+        //if an item is checked add to answer
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {

@@ -33,58 +33,6 @@ public class ShowQuestionFragment extends Fragment{
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =inflater.inflate(R.layout.fragment_choose, container, false);
-        /*spinner = view.findViewById(R.id.optionsQuestion);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity().getBaseContext(), R.array.questions, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        work = false;
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                fragmentManager = getParentFragmentManager();
-                fragmentTransaction =fragmentManager.beginTransaction();
-                if (work){
-                    if (position == 1){
-                        setOpenAnswerQuestion(null);
-                    } else if (position == 2) {
-                        OneChoiceFragment oneChoiceFragment = new OneChoiceFragment();
-                        Bundle args = new Bundle();
-                        args.putString("title", null);
-                        args.putStringArrayList("questions",null);
-                        oneChoiceFragment.setArguments(args);
-                        fragmentTransaction.replace(R.id.fragment_container_2, oneChoiceFragment);
-                        fragmentTransaction.commit();
-                    }else if (position == 3){
-                        MultipleChoiceFragment multipleChoiceFragment = new MultipleChoiceFragment();
-                        Bundle args = new Bundle();
-                        args.putString("title", null);
-                        args.putString("questions", null);
-                        multipleChoiceFragment.setArguments(args);
-                        fragmentTransaction.replace(R.id.fragment_container_2, multipleChoiceFragment);
-                        fragmentTransaction.commit();
-                    } else if (position == 4){
-                        RatingQuestionFragment ratingQuestionFragment = new RatingQuestionFragment();
-                        Bundle args = new Bundle();
-                        args.putString("title", null);
-                        args.putString("left", null);
-                        args.putString("right", null);
-                        ratingQuestionFragment.setArguments(args);
-                        fragmentTransaction.replace(R.id.fragment_container_2,ratingQuestionFragment);
-                        fragmentTransaction.commit();
-                    } else if (position==0) {
-                        if (fragmentManager.findFragmentById(R.id.fragment_container_2) != null) {
-                            fragmentTransaction.remove(fragmentManager.findFragmentById(R.id.fragment_container_2)).commit();
-                        }
-                    }
-                }
-                work = true;
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });*/
 
         return view;
 

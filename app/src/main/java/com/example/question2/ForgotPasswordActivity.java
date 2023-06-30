@@ -40,7 +40,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         goToLogin.setOnClickListener(v -> startActivity(new Intent(ForgotPasswordActivity.this,LoginActivity.class)));
 
     }
-
+    //send email to a valid email written to renew passsword
     private void resetPassword(){
         String email = emailView.getText().toString().trim();
 

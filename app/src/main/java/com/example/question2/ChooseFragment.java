@@ -38,6 +38,8 @@ public class ChooseFragment extends Fragment{
       adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
       work = false;
       spinner.setAdapter(adapter);
+
+      //when a choice of type of question is made, call the method for the question and call the fragment
       spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -101,6 +103,7 @@ public class ChooseFragment extends Fragment{
       fragmentManager = getParentFragmentManager();
     }
 
+  //for a score question, send the fragment the parameters
     public void setScoreQuestion(String title, String left, String right){
       setSpinner(4);
       fragmentManager = getParentFragmentManager();
@@ -116,6 +119,7 @@ public class ChooseFragment extends Fragment{
 
   }
 
+  //for a open answer question, send the fragment the parameters
   public void setOpenAnswerQuestion(String title){
     setSpinner(1);
     fragmentManager = getParentFragmentManager();
@@ -128,6 +132,7 @@ public class ChooseFragment extends Fragment{
 
   }
 
+  //for a one choice question, send the fragment the parameters
   public void setOneChoiceQuestion(String title, ArrayList<String> questions){
     setSpinner(2);
     fragmentManager = getParentFragmentManager();
@@ -141,6 +146,7 @@ public class ChooseFragment extends Fragment{
 
   }
 
+  //for a multiple choice question, send the fragment the parameters
   public void setMultipleChoiceQuestion(String title, ArrayList<String> questions){
     setSpinner(3);
     fragmentManager = getParentFragmentManager();

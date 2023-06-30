@@ -3,7 +3,7 @@ package com.example.question2.Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+//Question for rated answers
 public class ScoreQuestion extends Question implements Serializable {
     private String lowerSide, higherSide;
     private ArrayList<String> answers;

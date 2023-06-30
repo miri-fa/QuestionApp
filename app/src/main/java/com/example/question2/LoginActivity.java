@@ -28,6 +28,55 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity{
     private EditText emailView, passView;
+//gets and sets for test
+    public EditText getEmailView() {
+        return emailView;
+    }
+
+    public void setEmailView(EditText emailView) {
+        this.emailView = emailView;
+    }
+
+    public EditText getPassView() {
+        return passView;
+    }
+
+    public void setPassView(EditText passView) {
+        this.passView = passView;
+    }
+
+    public FirebaseAuth getmAuth() {
+        return mAuth;
+    }
+
+    public void setmAuth(FirebaseAuth mAuth) {
+        this.mAuth = mAuth;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     private FirebaseAuth mAuth;
     private String email, pass, role;
 
@@ -42,7 +91,7 @@ public class LoginActivity extends AppCompatActivity{
         emailView = (EditText) findViewById(R.id.loginEmailAddress);
         passView = (EditText) findViewById(R.id.loginPassword);
         mAuth = FirebaseAuth.getInstance();
-
+        //go to forgotten password
         View.OnClickListener onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,7 +103,7 @@ public class LoginActivity extends AppCompatActivity{
 
         Button buttonForgottenPassword = (Button) findViewById(R.id.forgottenpasswordbutton);
         buttonForgottenPassword.setOnClickListener(onClickListener);
-
+        //Go to main page
         View.OnClickListener onClickListener1 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,7 +113,7 @@ public class LoginActivity extends AppCompatActivity{
 
         Button buttonLogin = (Button) findViewById(R.id.loginButton);
         buttonLogin.setOnClickListener(onClickListener1);
-
+        //Go to register
         View.OnClickListener onClickListener2 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +128,7 @@ public class LoginActivity extends AppCompatActivity{
 
     }
 
-    private void userLogin() {
+    public void userLogin() {
         email = emailView.getText().toString().trim();
         pass = passView.getText().toString().trim();
 
@@ -98,6 +147,7 @@ public class LoginActivity extends AppCompatActivity{
             passView.requestFocus();
         }
         else {
+            //Check credentials and if true sign in
             mAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {

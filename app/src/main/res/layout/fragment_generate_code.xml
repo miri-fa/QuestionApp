@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ffffff">
+    >
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,7 +18,7 @@
         android:fontFamily="@font/lato_bold"
         android:textAlignment="center"
         android:text="El cuestionario se ha creado con éxito. El código de este cuestionario es:"
-        android:textColor="#EB6383"
+        android:textColor="#FFFFFF"
         android:textSize="20sp" />
     <TextView
         android:id="@+id/questionnaire_code_name"
@@ -47,7 +47,7 @@
             android:fontFamily="@font/lato_bold"
             android:textAlignment="center"
             android:text="Elige a quién quieres asignar este cuestionario. Puedes asignarlo a equipos y/o personas:"
-            android:textColor="#EB6383"
+            android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
         <FrameLayout
@@ -64,7 +64,7 @@
                 android:layout_width="60sp"
                 android:layout_marginTop="5sp"
                 android:layout_height="40sp"
-                android:textColor="#FFE9C5"
+                android:textColor="#FFFFFF"
                 android:background="@drawable/buttongradient"
                 android:layout_marginLeft="250sp"
                 android:fontFamily="@font/lato_bold"
@@ -142,7 +142,7 @@
         android:layout_width="200sp"
         android:layout_marginTop="580sp"
         android:layout_height="70dp"
-        android:textColor="#FFE9C5"
+        android:textColor="#FFFFFF"
         android:background="@drawable/buttongradient"
         android:layout_gravity="center_horizontal"
         android:fontFamily="@font/lato_bold"

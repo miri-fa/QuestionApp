@@ -6,7 +6,7 @@ import com.example.question2.Model.Teacher;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+//Questionnaire class
 public class Questionnaire implements Serializable {
     private String title;
     private boolean published;

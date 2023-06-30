@@ -82,6 +82,7 @@ public class MultipleChoiceFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         arrayList.remove(pos);
+                        q.deleteChoice(pos);
                         adapter.notifyDataSetChanged();
                     }
                 });

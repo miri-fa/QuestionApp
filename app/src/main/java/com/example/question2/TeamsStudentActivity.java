@@ -75,7 +75,7 @@ public class TeamsStudentActivity extends AppCompatActivity {
         loadData();
 
         buttonJoin = findViewById(R.id.joinTeamButton);
-
+//Join a team
         buttonJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,7 +126,7 @@ public class TeamsStudentActivity extends AppCompatActivity {
 
 
     }
-
+//Load teams in list
     private void loadData(){
         Context context = this;
         DatabaseReference questionnaires = FirebaseDatabase.getInstance().getReference("teams");

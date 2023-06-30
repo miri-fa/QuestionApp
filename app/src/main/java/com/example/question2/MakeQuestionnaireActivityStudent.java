@@ -191,8 +191,8 @@ public class MakeQuestionnaireActivityStudent extends AppCompatActivity implemen
                                 });
                     }
                 }
-                Toast.makeText(getApplicationContext(), "The questionnaire is saved", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(MakeQuestionnaireActivityStudent.this, MainActivityTeacher.class));
+                Toast.makeText(getApplicationContext(), "Los resultados se han enviado con éxito", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(MakeQuestionnaireActivityStudent.this, MainActivityStudent.class));
             }
         };
         buttonFinish.setOnClickListener(onClickListener1);
@@ -308,7 +308,7 @@ public class MakeQuestionnaireActivityStudent extends AppCompatActivity implemen
             answerMultipleChoiceQuestion = null;
         }
      }
-
+//Depending on the type of question, fill it with the information needed
     private void fillQuestion(Question question, int position){
         if (question instanceof ChoicesQuestion){
             ChoicesQuestion q = (ChoicesQuestion) question;

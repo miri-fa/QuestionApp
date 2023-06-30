@@ -2,7 +2,7 @@ package com.example.question2.Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-
+//Student user
 public class Student extends User implements Serializable {
     private ArrayList<Questionnaire> questionnairesForMe;
     private ArrayList<Team> teamsForMe;

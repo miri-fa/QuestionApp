@@ -82,7 +82,8 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
-
+                    //If the questionnaire is found, get the code and questions and add them
+                    //to an array
                     for (DataSnapshot ds : snapshot.getChildren()) {
                         code = ds.child("code").getValue(String.class);
                         questionnaireID = ds.getKey();
@@ -119,7 +120,7 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
         buttonDeleteQuestion = (Button) findViewById(R.id.questionnaire_delete_question);
         buttonNextQuestion = (Button) findViewById(R.id.questionnaire_advance_create);
         buttonBeforeQuestion = (Button) findViewById(R.id.questionnaire_back_create);
-
+        //If finish, save the changes made
         View.OnClickListener onClickListener1 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -138,15 +139,8 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
         };
         buttonFinish.setOnClickListener(onClickListener1);
 
-        View.OnClickListener onClickListener2 = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(EditQuestionnaireActivity.this, MainActivityTeacher.class));
 
-            }
-        };
-
-
+        //If  create question clicked, add question
         View.OnClickListener onClickListener3 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -163,7 +157,7 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
         };
 
         buttonCreateQuestion.setOnClickListener(onClickListener3);
-
+        //Delete question from array
         View.OnClickListener onClickListener4 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,7 +180,7 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
         };
 
         buttonDeleteQuestion.setOnClickListener(onClickListener4);
-
+        //navigate forward
         View.OnClickListener onClickListener5 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -202,7 +196,7 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
         };
 
         buttonNextQuestion.setOnClickListener(onClickListener5);
-
+        //go back
         View.OnClickListener onClickListener6 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,7 +212,7 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
         };
 
         buttonBeforeQuestion.setOnClickListener(onClickListener6);
-
+        //open help popup
         View.OnClickListener onClickListenerHelp = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -255,7 +249,7 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
 
     }
 
-
+    //create questionnaire view
     private Questionnaire createQuestionnaire(){
 
         questionnaire.setTitle(getIntent().getStringExtra("title"));
@@ -333,39 +327,5 @@ public class EditQuestionnaireActivity extends AppCompatActivity implements Open
     @Override
     public void onInputMultipleChoiceSent(ChoicesQuestion choicesQuestion) {
         this.choicesQuestion = choicesQuestion;
-    }
-
-    private String generateCode(){
-        String SALTCHARS = "abcdefghijklmnopqrstuvwxyz1234567890";
-        StringBuilder salt = new StringBuilder();
-        Random rnd = new Random();
-        while (salt.length() < 6) {
-            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
-            salt.append(SALTCHARS.charAt(index));
-        }
-        String saltStr = salt.toString();
-        return saltStr;
-    }
-
-    private boolean checkCode(String code){
-        repeated = false;
-        DatabaseReference questionnaires = FirebaseDatabase.getInstance().getReference("questionnaires");
-        questionnaires.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    for (DataSnapshot ds : snapshot.getChildren()) {
-                        Questionnaire q = ds.getValue(Questionnaire.class);
-                        if ((q.getCode()!=null)&&(q.getCode().equals(code))){
-                            repeated = true;
-                        }
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
-        return repeated;
     }
 }

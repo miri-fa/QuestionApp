@@ -111,14 +111,14 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/fill_questionnaire_button"
+                style="@style/FixedButtonText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="hacer encuesta"
-                style="@style/FixedButtonText"
-                android:fontFamily="@font/lato_bold"
-                android:textColor="#FFFFFF"
                 android:layout_gravity="center"
-                android:background="@drawable/bottom_buttons_main" />
+                android:background="@drawable/bottom_buttons_main"
+                android:fontFamily="@font/lato_bold"
+                android:text="hacer encuesta"
+                android:textColor="#FFFFFF" />
 
 
         </FrameLayout>

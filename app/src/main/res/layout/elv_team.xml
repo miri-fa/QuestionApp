@@ -4,15 +4,14 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/teamName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/teamName"
-        android:textColor="@color/white"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:background="@drawable/buttongradient"
         android:padding="15dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        ></TextView>
+        android:textColor="@color/white"></TextView>
 
     <ImageView
         android:id="@+id/deleteGroup"

@@ -56,7 +56,6 @@ public class CreateQuestionnaireActivity extends AppCompatActivity{
                 final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
                 // show the popup window
-                // which view you pass in doesn't matter, it is only used for the window tolken
                 popupWindow.showAtLocation(findViewById(R.id.frameLayout2), Gravity.CENTER, 0, 0);
                 TextView message = popupWindow.getContentView().findViewById(R.id.helpText);
                 HelpManager help = new HelpManager();
@@ -74,7 +73,7 @@ public class CreateQuestionnaireActivity extends AppCompatActivity{
         };
         Button buttonHelp = (Button) findViewById(R.id.helpmain);
         buttonHelp.setOnClickListener(onClickListenerHelp);
-
+        //If create questionnaire button is clicked, call make questionnaire with the title chosen
         View.OnClickListener onClickListener1 = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

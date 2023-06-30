@@ -75,7 +75,7 @@ public class RatingQuestionFragment extends Fragment {
 
             }
         });
-
+//See if th text is changed, if it is, send it for change on the activity
         lowerExtreme.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -118,7 +118,7 @@ public class RatingQuestionFragment extends Fragment {
         return view;
 
     }
-
+//Send to activity
     @Override
     public void onAttach(Context context){
         super.onAttach(context);
